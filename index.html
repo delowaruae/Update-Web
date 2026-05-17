@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B24 Dubai - Connecting Buyers & Suppliers</title>
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandYellow: '#ffd200',
+                        brandBlue: '#1a1b4b',
+                        brandCrimson: '#e11d48',
+                        rakBurgundy: '#5f0f1c'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Smooth Scroll & Custom Scrollbar styling */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        /* Diagonal split clip-path for professional look matching the original screenshot */
+        .diagonal-split {
+            clip-path: polygon(0 0, 48% 0, 38% 100%, 0 100%);
+        }
+        @media (max-width: 768px) {
+            .diagonal-split {
+                clip-path: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-800 font-sans min-h-screen antialiased flex flex-col justify-between">
+
+    <!-- TOP BAR -->
+    <div class="bg-[#f1f5f9] border-b border-slate-200 text-xs text-slate-600 py-2.5 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="font-medium">Welcome to B2BDubai24.com</span>
+            </div>
+            <div class="flex items-center gap-5 flex-wrap justify-center">
+                <a href="mailto:info@b2bdubai24.com" class="hover:text-slate-900 transition flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    info@b2bdubai24.com
+                </a>
+                <a href="#" onclick="openModal('help')" class="hover:text-slate-900 transition">Help Center</a>
+                <a href="#" onclick="openModal('about')" class="hover:text-slate-900 transition">About Us</a>
+                <a href="#" onclick="openModal('contact')" class="hover:text-slate-900 transition">Contact Us</a>
+                <button onclick="openModal('join')" class="bg-slate-950 text-white font-medium px-4 py-1 rounded-full hover:bg-slate-800 transition duration-200">
+                    Join Free
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN BRAND HEADER (YELLOW BAR) -->
+    <header class="bg-brandYellow py-4 px-4 md:px-8 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8">
+            
+            <!-- Logo Section -->
+            <div class="flex items-center justify-between w-full lg:w-auto">
+                <a href="#" class="flex items-center gap-2">
+                    <!-- Custom SVG Interlocking Loops -->
+                    <div class="relative w-10 h-10 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="w-10 h-10">
+                            <!-- Left Loop (Blue) -->
+                            <circle cx="38" cy="50" r="22" fill="none" stroke="#1e3a8a" stroke-width="10" opacity="0.9"/>
+                            <!-- Right Loop (Red) -->
+                            <circle cx="62" cy="50" r="22" fill="none" stroke="#ef4444" stroke-width="10" opacity="0.9"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black text-slate-900 tracking-tight leading-none block">B2B24</span>
+                        <span class="text-[10px] font-semibold text-slate-700 uppercase tracking-widest block">Connecting buyers</span>
+                    </div>
+                </a>
+                
+                <!-- Quick Mobile Toggle Menu -->
+                <button class="lg:hidden p-2 text-slate-950 focus:outline-none" onclick="toggleMobileNav()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+
+            <!-- Enhanced Search Engine -->
+            <div class="w-full max-w-2xl relative">
+                <div class="bg-white rounded-full shadow-md flex items-center border border-slate-200/50 hover:border-slate-300 focus-within:ring-2 focus-within:ring-brandBlue/20 transition duration-200 pl-4 overflow-hidden">
+                    <input 
+                        type="text" 
+                        placeholder="Search for products, brands, suppliers..." 
+                        class="w-full text-sm text-slate-700 bg-transparent focus:outline-none py-3.5 pr-2 placeholder:text-slate-400">
+                    <div class="flex items-center gap-3.5 pr-4 text-slate-400">
+                        <!-- Camera / Lens Search SVG -->
+                        <button class="hover:text-brandBlue transition" title="Search by Image">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0110 3h4a2.31 2.31 0 013.173 3.175l.173.346a1.155 1.155 0 001.033.642H20a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V9.163a2 2 0 012-2h1.173a1.155 1.155 0 001.033-.642l.173-.346z"></path><circle cx="12" cy="13" r="3" stroke-linecap="round" stroke-linejoin="round"></circle></svg>
+                        </button>
+                        <!-- Voice Search SVG -->
+                        <button class="hover:text-brandBlue transition" title="Voice Search">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                        </button>
+                        <!-- Main Search Trigger -->
+                        <button class="bg-brandBlue text-white p-2.5 rounded-full hover:bg-slate-800 transition shadow-sm ml-2">
+                            <svg class="w-4.5 h-4.5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Upper Navigation Right Elements -->
+            <div class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-900">
+                <a href="#" class="hover:underline transition">Supplier</a>
+                <a href="#" class="hover:underline transition">Buyers</a>
+                
+                <!-- Separator Line -->
+                <div class="h-4 w-[1px] bg-slate-400/40"></div>
+
+                <!-- Flag Selector -->
+                <button class="flex items-center gap-1.5 hover:opacity-80 transition">
+                    <!-- Custom SVG UAE Flag -->
+                    <div class="w-5 h-3.5 flex overflow-hidden rounded-[2px] border border-black/10">
+                        <div class="w-1.5 bg-red-600 h-full"></div>
+                        <div class="flex-1 flex flex-col">
+                            <div class="h-1/3 bg-green-700"></div>
+                            <div class="h-1/3 bg-white"></div>
+                            <div class="h-1/3 bg-black"></div>
+                        </div>
+                    </div>
+                    <span>AED</span>
+                </button>
+
+                <!-- Language Selector -->
+                <button class="flex items-center gap-1.5 hover:opacity-80 transition text-xs font-bold bg-slate-900/10 px-2 py-1 rounded">
+                    <svg class="w-4 h-4 text-slate-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    <span>EN</span>
+                </button>
+
+                <!-- Sign in -->
+                <button onclick="openModal('signin')" class="hover:text-slate-700 flex items-center gap-1">
+                    Sign In / Reg
+                </button>
+
+                <!-- Heart Icon -->
+                <a href="#" class="text-slate-900 hover:text-red-500 transition relative">
+                    <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                </a>
+
+                <!-- Notification Bell with count -->
+                <a href="#" class="text-slate-900 hover:text-amber-500 transition relative">
+                    <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    <span class="absolute -top-1.5 -right-1.5 bg-brandCrimson text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center border border-white">3</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HORIZONTAL SCROLLING CATEGORY BAR -->
+    <div class="bg-white border-b border-slate-200 py-3 shadow-sm px-4 md:px-8">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-x-auto custom-scrollbar whitespace-nowrap scroll-smooth">
+            
+            <!-- Category Item -->
+            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
+                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">🔧</span>
+                <span>Components</span>
+            </a>
+
+            <!-- Category Item -->
+            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
+                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">⌚</span>
+                <span>Smart Wearables</span>
+            </a>
+
+            <!-- Category Item -->
+            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
+                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">🎮</span>
+                <span>Gaming Hub</span>
+            </a>
+
+            <!-- Category Item -->
+            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
+                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">📷</span>
+                <span>Cameras & Optics</span>
+            </a>
+
+            <!-- Category Item -->
+            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
+                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">🐱</span>
+                <span>Household & Pets</span>
+            </a>
+
+            <!-- Category Item -->
+            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
+                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">💻</span>
+                <span>Electronics</span>
+            </a>
+
+            <!-- Category Item -->
+            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
+                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">📱</span>
+                <span>Mobile Phones</span>
+            </a>
+
+            <!-- Category Item -->
+            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
+                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">🛏️</span>
+                <span>Home Furniture</span>
+            </a>
+
+            <!-- Category Item -->
+            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
+                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">🧥</span>
+                <span>Fashion & Apparel</span>
+            </a>
+
+            <!-- Repeat for layout matching symmetry -->
+            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
+                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">🔧</span>
+                <span>Components</span>
+            </a>
+
+            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
+                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">⌚</span>
+                <span>Smart Devices</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN GRID CONTAINER (THREE-COLUMN HERO REGION) -->
+    <main class="max-w-7xl mx-auto py-6 px-4 md:px-8 w-full flex-grow">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-stretch">
+            
+            <!-- COLUMN 1: ALL CATEGORIES VERTICAL LIST (LEFT) -->
+            <div class="lg:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[460px]">
+                <div class="bg-slate-50 border-b border-slate-200 py-4 px-5">
+                    <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
+                
+                        All Categories
+                    </h3>
+                </div>
+                
+                <!-- Long Scrollable Category List -->
+                <div class="overflow-y-auto custom-scrollbar flex-1 divide-y divide-slate-100">
+                    
+                    <!-- Highlighted Active Category -->
+                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-brandCrimson font-bold bg-rose-50/50 hover:bg-rose-50 transition">
+                        <span>Consumer Electronics</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+
+                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
+                        <span>Mobile Electronics</span>
+                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+
+                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
+                        <span>Smart Living Electronics</span>
+                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+
+                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
+                        <span>Electronic Components</span>
+                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+
+                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
+                        <span>Household & Pets</span>
+                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+
+                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
+                        <span>Sports & Outdoors</span>
+                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+
+                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
+                        <span>Fashion Accessories</span>
+                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+
+                    <!-- Extra items for matches screen -->
+                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
+                        <span>Living Items</span>
+                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+
+                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
+                        <span>Pet Components</span>
+                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+
+                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
+                        <span>Tailor Household & Decor</span>
+                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- COLUMN 2: HERO BANNER CAROUSEL (MIDDLE) -->
+            <div class="lg:col-span-6 bg-slate-900 rounded-xl overflow-hidden shadow-md relative h-[460px] group">
+                
+                <!-- Dynamic Slides -->
+                <div id="slide-1" class="absolute inset-0 w-full h-full block transition-all duration-700 ease-in-out opacity-100 z-10">
+                    <!-- Right Side Bedroom image -->
+                    <img 
+                        src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80" 
+                        alt="Modern Bedroom Design" 
+                        class="absolute right-0 top-0 h-full w-full object-cover"
+                    >
+                    
+                    <!-- Left Diagonal Cut (Brand Navy Blue) -->
+                    <div class="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#0a0f2b] via-[#121940] to-transparent diagonal-split z-10 flex flex-col justify-center px-8 lg:px-14">
+                        <div class="max-w-[70%] sm:max-w-[50%] lg:max-w-[60%] text-white">
+                            <h2 class="text-3xl lg:text-4.5xl font-extrabold tracking-tight leading-none mb-3 uppercase">
+                                Furniture for<br><span class="text-brandYellow">every moment</span>
+                            </h2>
+                            <p class="text-rose-500 font-bold text-lg mb-6 tracking-wide">UPTO 35% OFF!</p>
+                            <a href="#" class="inline-flex items-center gap-2 bg-white text-slate-950 px-6 py-3 rounded-full font-bold text-sm shadow-lg hover:bg-slate-100 hover:shadow-xl transition duration-200">
+                                Shop Now
+                                <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="slide-2" class="absolute inset-0 w-full h-full block transition-all duration-700 ease-in-out opacity-0 z-0">
+                    <img 
+                        src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80" 
+                        alt="Office Furnitures" 
+                        class="absolute right-0 top-0 h-full w-full object-cover"
+                    >
+                    <div class="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#0d3423] via-[#144731] to-transparent diagonal-split z-10 flex flex-col justify-center px-8 lg:px-14">
+                        <div class="max-w-[70%] sm:max-w-[50%] lg:max-w-[60%] text-white">
+                            <h2 class="text-3xl lg:text-4.5xl font-extrabold tracking-tight leading-none mb-3 uppercase">
+                                Upgrade Your<br><span class="text-emerald-400">Workspace</span>
+                            </h2>
+                            <p class="text-amber-400 font-bold text-lg mb-6 tracking-wide">EXECUTIVE SAVINGS</p>
+                            <a href="#" class="inline-flex items-center gap-2 bg-white text-slate-950 px-6 py-3 rounded-full font-bold text-sm shadow-lg hover:bg-slate-100 hover:shadow-xl transition duration-200">
+                                Explore Office
+                                <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="slide-3" class="absolute inset-0 w-full h-full block transition-all duration-700 ease-in-out opacity-0 z-0">
+                    <img 
+                        src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=80" 
+                        alt="Smart Tech Living" 
+                        class="absolute right-0 top-0 h-full w-full object-cover"
+                    >
+                    <div class="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#311145] via-[#481d63] to-transparent diagonal-split z-10 flex flex-col justify-center px-8 lg:px-14">
+                        <div class="max-w-[70%] sm:max-w-[50%] lg:max-w-[60%] text-white">
+                            <h2 class="text-3xl lg:text-4.5xl font-extrabold tracking-tight leading-none mb-3 uppercase">
+                                Smart Living<br><span class="text-indigo-300">Technology</span>
+                            </h2>
+                            <p class="text-brandYellow font-bold text-lg mb-6 tracking-wide">CONNECT YOUR HOME</p>
+                            <a href="#" class="inline-flex items-center gap-2 bg-white text-slate-950 px-6 py-3 rounded-full font-bold text-sm shadow-lg hover:bg-slate-100 hover:shadow-xl transition duration-200">
+                                View Gadgets
+                                <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide indicator dots -->
+                <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20 bg-black/30 backdrop-blur-md px-3 py-1.5 rounded-full">
+                    <button onclick="goToSlide(1)" id="dot-1" class="w-2.5 h-2.5 rounded-full bg-white transition"></button>
+                    <button onclick="goToSlide(2)" id="dot-2" class="w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/60 transition"></button>
+                    <button onclick="goToSlide(3)" id="dot-3" class="w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/60 transition"></button>
+                </div>
+
+                <!-- Left/Right Slide Arrows on hover -->
+                <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 z-30">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 z-30">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+
+            <!-- COLUMN 3: POPULAR SEARCH & DIRECT REQUESTS (RIGHT) -->
+            <div class="lg:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-[460px] justify-between">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 flex items-center justify-between">
+                        <span>Popular Search</span>
+                        <span class="text-xs text-brandCrimson hover:underline cursor-pointer">View all</span>
+                    </h3>
+                    
+                    <!-- Search Items Vertical List -->
+                    <div class="space-y-3">
+                        
+                        <!-- Row 1 -->
+                        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition border border-slate-100 cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=120&q=80" alt="Sofa" class="w-12 h-12 rounded object-cover border border-slate-200">
+                            <div>
+                                <h4 class="text-xs font-semibold text-slate-900">Home Furniture</h4>
+                                <span class="text-[10px] text-slate-500 font-medium block">30,000+ Products</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition border border-slate-100 cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=120&q=80" alt="Desk" class="w-12 h-12 rounded object-cover border border-slate-200">
+                            <div>
+                                <h4 class="text-xs font-semibold text-slate-900">Home Furniture</h4>
+                                <span class="text-[10px] text-slate-500 font-medium block">50,000+ Products</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 3 -->
+                        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition border border-slate-100 cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=120&q=80" alt="Modern Chair" class="w-12 h-12 rounded object-cover border border-slate-200">
+                            <div>
+                                <h4 class="text-xs font-semibold text-slate-900">Home Furniture</h4>
+                                <span class="text-[10px] text-slate-500 font-medium block">60,000+ Products</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 4 -->
+                        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition border border-slate-100 cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=120&q=80" alt="Bed Design" class="w-12 h-12 rounded object-cover border border-slate-200">
+                            <div>
+                                <h4 class="text-xs font-semibold text-slate-900">Home Furniture</h4>
+                                <span class="text-[10px] text-slate-500 font-medium block">20,000+ Products</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 5 -->
+                        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition border border-slate-100 cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=120&q=80" alt="Sofa Furniture" class="w-12 h-12 rounded object-cover border border-slate-200">
+                            <div>
+                                <h4 class="text-xs font-semibold text-slate-900">Sofa Furniture</h4>
+                                <span class="text-[10px] text-slate-500 font-medium block">70,000+ Products</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Red Border Request Action Button -->
+                <button 
+                    onclick="openModal('request')"
+                    class="w-full border-2 border-brandCrimson text-brandCrimson font-bold text-xs uppercase py-3.5 rounded-lg hover:bg-brandCrimson hover:text-white transition duration-200 text-center block tracking-wide mt-2"
+                >
+                    Post Your Request Now
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- PROMOTIONAL BOTTOM BANNER CAROUSEL (Burgundy/RAKBANK Theme) -->
+    <section class="max-w-7xl mx-auto w-full px-4 md:px-8 pb-8">
+        <div id="promo-carousel" class="relative bg-rakBurgundy rounded-xl overflow-hidden shadow-lg p-5 md:p-6 text-white min-h-[100px] flex items-center">
+            
+            <!-- Carousel Content Slide 1 -->
+            <div id="promo-slide-1" class="w-full flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-500 opacity-100">
+                <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+                    <!-- Custom simulated RAKBANK Logo -->
+                    <div class="flex flex-col items-center md:items-start bg-white/10 px-4 py-2 rounded border border-white/20">
+                        <span class="text-lg font-black tracking-tight text-white leading-none">RAKBANK</span>
+                        <span class="text-[9px] text-brandYellow font-semibold uppercase tracking-wider block mt-1">50 years with you</span>
+                    </div>
+                    
+                    <div class="space-y-1">
+                        <h4 class="text-xl md:text-2xl font-black tracking-wide flex items-center justify-center md:justify-start gap-2">
+                            <span class="text-brandYellow">0% Interest</span> Installments
+                        </h4>
+                        <p class="text-sm text-slate-300 font-medium">For Up To 12 Months</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 flex-wrap justify-center">
+                    <span class="bg-white/10 border border-white/20 text-xs py-2 px-3.5 rounded font-mono font-bold tracking-wider">
+                        Use Code: <span class="text-brandYellow">ZERO50</span>
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-medium">*T&Cs apply</span>
+                </div>
+            </div>
+
+            <!-- Carousel Content Slide 2 -->
+            <div id="promo-slide-2" class="w-full flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-500 opacity-0 hidden">
+                <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+                    <div class="flex flex-col items-center md:items-start bg-white/10 px-4 py-2 rounded border border-white/20">
+                        <span class="text-lg font-black tracking-tight text-white leading-none">B2B DUBAI</span>
+                        <span class="text-[9px] text-brandYellow font-semibold uppercase tracking-wider block mt-1">EXPORTER DEAL</span>
+                    </div>
+                    
+                    <div class="space-y-1">
+                        <h4 class="text-xl md:text-2xl font-black tracking-wide text-brandYellow">
+                            Global Supply Chain Shipping
+                        </h4>
+                        <p class="text-sm text-slate-300 font-medium">Get flat 15% discount on container booking</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 flex-wrap justify-center">
+                    <span class="bg-white/10 border border-white/20 text-xs py-2 px-3.5 rounded font-mono font-bold tracking-wider">
+                        Use Code: <span class="text-brandYellow">SHIPFREE</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Left and Right Arrows on the Side -->
+            <button onclick="prevPromo()" class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/30 hover:bg-black/50 text-white flex items-center justify-center transition border border-white/10">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <button onclick="nextPromo()" class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/30 hover:bg-black/50 text-white flex items-center justify-center transition border border-white/10">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+
+            <!-- Bottom slide dots -->
+            <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+                <div id="promo-dot-1" class="w-1.5 h-1.5 rounded-full bg-white transition"></div>
+                <div id="promo-dot-2" class="w-1.5 h-1.5 rounded-full bg-white/30 transition"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 B2B24 Dubai. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:underline">Privacy Policy</a>
+                <a href="#" class="hover:underline">Terms of Service</a>
+                <a href="#" class="hover:underline">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE MOCK MODAL / ALERTS SYSTEM -->
+    <div id="info-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center z-50 hidden p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-slate-100 overflow-hidden transform scale-95 transition-transform duration-300">
+            <!-- Modal Header -->
+            <div class="bg-slate-50 border-b border-slate-100 py-4 px-6 flex items-center justify-between">
+                <h4 id="modal-title" class="font-bold text-slate-800 text-base">Notification</h4>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="p-6 space-y-4">
+                <div id="modal-desc" class="text-sm text-slate-600 leading-relaxed">
+                    Welcome to the improved Dubai B2B portal template!
+                </div>
+                <div class="flex justify-end">
+                    <button onclick="closeModal()" class="bg-brandBlue text-white font-semibold px-5 py-2 rounded-lg text-xs hover:bg-slate-800 transition">
+                        Understood
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP JAVASCRIPT CONTROLLER -->
+    <script>
+        // Hero Slide States
+        let currentSlide = 1;
+        const totalSlides = 3;
+
+        function updateSlideUI() {
+            for (let i = 1; i <= totalSlides; i++) {
+                const slide = document.getElementById(`slide-${i}`);
+                const dot = document.getElementById(`dot-${i}`);
+                if (i === currentSlide) {
+                    slide.classList.remove('opacity-0', 'z-0');
+                    slide.classList.add('opacity-100', 'z-10');
+                    dot.classList.remove('bg-white/40');
+                    dot.classList.add('bg-white');
+                } else {
+                    slide.classList.remove('opacity-100', 'z-10');
+                    slide.classList.add('opacity-0', 'z-0');
+                    dot.classList.remove('bg-white');
+                    dot.classList.add('bg-white/40');
+                }
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = currentSlide === totalSlides ? 1 : currentSlide + 1;
+            updateSlideUI();
+        }
+
+        function prevSlide() {
+            currentSlide = currentSlide === 1 ? totalSlides : currentSlide - 1;
+            updateSlideUI();
+        }
+
+        function goToSlide(num) {
+            currentSlide = num;
+            updateSlideUI();
+        }
+
+        // Auto transition hero slides
+        let heroInterval = setInterval(nextSlide, 6000);
+
+        // Reset auto transition on user click
+        function resetHeroInterval() {
+            clearInterval(heroInterval);
+            heroInterval = setInterval(nextSlide, 6000);
+        }
+
+        // Promotional Banner State Controller
+        let currentPromo = 1;
+        const totalPromos = 2;
+
+        function updatePromoUI() {
+            for (let i = 1; i <= totalPromos; i++) {
+                const slide = document.getElementById(`promo-slide-${i}`);
+                const dot = document.getElementById(`promo-dot-${i}`);
+                if (i === currentPromo) {
+                    slide.classList.remove('opacity-0', 'hidden');
+                    slide.classList.add('opacity-100');
+                    dot.classList.remove('bg-white/30');
+                    dot.classList.add('bg-white');
+                } else {
+                    slide.classList.remove('opacity-100');
+                    slide.classList.add('opacity-0', 'hidden');
+                    dot.classList.remove('bg-white');
+                    dot.classList.add('bg-white/30');
+                }
+            }
+        }
+
+        function nextPromo() {
+            currentPromo = currentPromo === totalPromos ? 1 : currentPromo + 1;
+            updatePromoUI();
+        }
+
+        function prevPromo() {
+            currentPromo = currentPromo === 1 ? totalPromos : currentPromo - 1;
+            updatePromoUI();
+        }
+
+        // Interactive Modals
+        function openModal(type) {
+            const modal = document.getElementById('info-modal');
+            const title = document.getElementById('modal-title');
+            const desc = document.getElementById('modal-desc');
+
+            if (type === 'help') {
+                title.innerText = 'Help Center';
+                desc.innerHTML = `<p>Welcome to B2B24 Help & Support center.</p>
+                <ul class="list-disc list-inside mt-2 space-y-1">
+                    <li>How do I post a buying request?</li>
+                    <li>Sourcing products in Dubai Jebel Ali Freezone.</li>
+                    <li>Connecting directly to verified UAE Gold/Bulk wholesalers.</li>
+                </ul>`;
+            } else if (type === 'about') {
+                title.innerText = 'About B2BDubai24';
+                desc.innerText = 'B2B24 connects premium suppliers, manufacturers, and international buyers within the UAE and Gulf region. Our modernized framework accelerates direct commercial trade pipelines.';
+            } else if (type === 'contact') {
+                title.innerText = 'Contact Corporate Office';
+                desc.innerHTML = `<p class="font-semibold text-slate-800">B2BDubai24 HQ</p>
+                <p>Sheikh Zayed Road, Downtown Dubai, UAE</p>
+                <p class="mt-2 text-brandCrimson font-bold">Hotline: +971 4 000 0000</p>`;
+            } else if (type === 'join') {
+                title.innerText = 'Registration Portal';
+                desc.innerHTML = `<form class="space-y-3 mt-1" onsubmit="event.preventDefault(); alert('Success! Welcome to B2B24!'); closeModal();">
+                    <input type="text" placeholder="Company Legal Name" class="w-full border p-2 rounded text-xs" required />
+                    <input type="email" placeholder="Business Email Address" class="w-full border p-2 rounded text-xs" required />
+                    <button type="submit" class="w-full bg-brandBlue text-white p-2 rounded text-xs font-bold hover:bg-slate-800">Create Supplier/Buyer Profile</button>
+                </form>`;
+            } else if (type === 'signin') {
+                title.innerText = 'Sign In to Your Workspace';
+                desc.innerHTML = `<form class="space-y-3 mt-1" onsubmit="event.preventDefault(); alert('Logged in successfully!'); closeModal();">
+                    <input type="email" placeholder="Work Email" class="w-full border p-2 rounded text-xs" required />
+                    <input type="password" placeholder="Password" class="w-full border p-2 rounded text-xs" required />
+                    <button type="submit" class="w-full bg-brandBlue text-white p-2 rounded text-xs font-bold hover:bg-slate-800">Access Portal</button>
+                </form>`;
+            } else if (type === 'request') {
+                title.innerText = 'Post Buying Request (RFQ)';
+                desc.innerHTML = `<form class="space-y-3 mt-1" onsubmit="event.preventDefault(); alert('Buying request submitted! Suppliers will contact you shortly.'); closeModal();">
+                    <input type="text" placeholder="What product/service are you looking for?" class="w-full border p-2 rounded text-xs" required />
+                    <textarea placeholder="Specify quantity, estimated budget, and delivery timeline..." class="w-full border p-2 rounded text-xs h-20" required></textarea>
+                    <button type="submit" class="w-full bg-brandCrimson text-white p-2.5 rounded text-xs font-bold hover:bg-rose-700">Submit RFQ</button>
+                </form>`;
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('info-modal').classList.add('hidden');
+        }
+
+        // Toggle mobile navigation warning
+        function toggleMobileNav() {
+            alert("B2B24: Navigation optimized. Try rotating your device or using larger desktop frames for native B2B bulk editing tools!");
+        }
+    </script>
+</body>
+</html>

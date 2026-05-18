@@ -3,715 +3,1024 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B2B24 Dubai - Connecting Buyers & Suppliers</title>
-    <!-- Tailwind CSS Play CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandYellow: '#ffd200',
-                        brandBlue: '#1a1b4b',
-                        brandCrimson: '#e11d48',
-                        rakBurgundy: '#5f0f1c'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    }
-                }
+    <title>B2B24 - Connecting Buyers & Suppliers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-yellow: #FFEB00;
+            --dark-blue: #0F172A;
+            --text-dark: #334155;
+            --text-light: #64748B;
+            --border-color: #E2E8F0;
+            --bg-light: #F8FAFC;
+            --accent-red: #DC2626;
+            --maroon-banner: #7A0616;
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f4f5f7;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ==========================================================================
+           1. TOP UTILITY BAR
+           ========================================================================== */
+        .top-bar {
+            background-color: #ADD8E6;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 13px;
+            color: #333;
+            padding: 1px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .top-bar-right a {
+            transition: var(--transition-smooth);
+        }
+
+        .top-bar-right a:hover {
+            color: var(--accent-red);
+        }
+
+        .join-free-btn {
+            background-color: #000;
+            color: #fff !important;
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            transition: var(--transition-smooth);
+        }
+
+        .join-free-btn:hover {
+            background-color: #333;
+        }
+
+        /* ==========================================================================
+           2. MAIN YELLOW NAVBAR
+           ========================================================================== */
+        .main-nav {
+            background-color: var(--primary-yellow);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: #000;
+            line-height: 1;
+        }
+
+        .logo-subtext {
+            font-size: 11px;
+            color: #555;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .nav-menu-right {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .nav-link-item {
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-link-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #000;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-link-item:hover::after {
+            width: 100%;
+        }
+
+        .nav-tools-group {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding-left: 10px;
+        }
+
+        .flag-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .flag-icon-mock {
+            width: 18px;
+            height: 12px;
+            background: linear-gradient(to bottom, #ff0000 33%, #fff 33%, #fff 66%, #00ff00 66%);
+            border: 1px solid #ddd;
+        }
+
+        .tool-icon {
+            font-size: 18px;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .tool-icon:hover {
+            transform: scale(1.1);
+        }
+
+
+    .btn-join-free {
+            background-color: #000;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+		
+        .badge-count {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background-color: var(--accent-red);
+            color: #FFF;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 2px 5px;
+            border-radius: 10px;
+        }
+
+        .mobile-menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #000;
+        }
+
+        /* ==========================================================================
+           3. SECOND NAVBAR (HORIZONTAL SCROLL BAR)
+           ========================================================================== */
+        .second-navbar {
+            background-color: #FFF;
+            border-bottom: 2px solid var(--border-color);
+            padding: 10px 20px;
+			
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+			
+        }
+
+        /* Standard responsive dynamic scroll management */
+        .second-navbar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .second-navbar::-webkit-scrollbar-thumb {
+            background: transparent;
+            border-radius: 4px;
+		
+        }
+        .second-navbar:hover::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+        }
+
+        .sec-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+			padding:3px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #334155;
+            cursor: pointer;
+			border:1px solid LightGray;
+			border-radius: 5px;
+            transition: var(--transition-smooth);
+        }
+
+        .sec-nav-link:hover {
+            color: var(--accent-red);
+        }
+
+        .sec-nav-link i {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* ==========================================================================
+           4. MAIN HERO GRID STRUCTURE
+           ========================================================================== */
+        .hero-section-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr 240px;
+            gap: 15px;
+            padding: 15px;
+            max-width: 100%;
+		
+        }
+
+        /* Left Category Menu */
+        .category-container {
+            background-color: #FFF;
+            border: 1px solid var(--border-color);
+            display: flex;
+			border-radius:10px;
+            flex-direction: column;
+            height: 440px;
+        }
+
+        .cat-header {
+            font-size: 14px;
+            font-weight: 700;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            color: #000;   
+        }
+
+        .cat-scroll-list {
+            overflow-y: hidden; /* Hidden by default */
+            height: 100%;
+            padding: 5px 0;	 
+        }
+
+        /* Shows Scrollbar cleanly on Hover */
+        .category-container:hover .cat-scroll-list {
+            overflow-y: auto;
+        }
+
+        /* Professional thin scrollbar custom styling */
+        .cat-scroll-list::-webkit-scrollbar {
+            width: 5px;
+        }
+        .cat-scroll-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .cat-scroll-list::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .cat-menu-item a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            font-size: 13px;
+            color: #44546a;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        .cat-menu-item a:hover {
+            background-color: #f8fafc;
+            color: var(--accent-red);
+            padding-left: 18px;
+        }
+
+        .cat-menu-item a i {
+            font-size: 10px;
+            opacity: 0.5;
+        }
+
+        /* Central Image Display Grid Layout */
+        .carousel-view-window {
+            position: relative;
+            height: 440px;
+            background-color: #FFF;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+				border-radius:10px;
+        }
+
+        .carousel-container-track {
+            display: flex;
+			
+            width: 300%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .main-hero-slide { 
+            width: 33.3333%;
+            height: 100%;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+			border-radius:10px;
+        }
+
+        /* Split Screen Angle Gradient matching picture overlay */
+        .main-hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 48%;
+            height: 100%;
+            background: linear-gradient(135deg, #1d1045 0%, #0d0626 100%);
+            transform: skewX(-8deg);
+            transform-origin: top left;
+            z-index: 1;
+        }
+
+        .slide-inner-content {
+            position: relative;
+            z-index: 2;
+            color: #FFF;
+            padding-left: 40px;
+            max-width: 380px;
+        }
+
+        .slide-inner-content h1 {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .slide-inner-content p {
+            font-size: 16px;
+            font-weight: 600;
+            color: #FFF;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .shop-btn-link {
+            display: inline-block;
+            background-color: #FFF;
+            color: #000;
+            padding: 10px 28px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: var(--transition-smooth);
+        }
+
+        .shop-btn-link:hover {
+            background-color: var(--primary-yellow);
+            transform: translateY(-2px);
+        }
+
+        /* Floating Absolute Search bar setup */
+        .search-floating-engine {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+			height:50px;
+			opacity:80%;
+            background-color: #FFF;
+            border-radius: 30px;
+            padding: 6px 18px;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border: 1px solid #ccc;
+        }
+
+        .search-floating-engine input {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 13px;
+            color: #333;
+			
+        }
+
+        .search-input-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .search-input-actions i {
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .search-input-actions i:hover {
+            color: blue;
+        }
+
+        /* Slider Controls indicators */
+        .indicator-dots-group {
+            position: absolute;
+            bottom: 15px;
+            left: 25%;
+            z-index: 5;
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot-node {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .dot-node.active-state {
+            background-color: #FFF;
+            width: 18px;
+            border-radius: 4px;
+        }
+
+        /* Right Sidebar Component layout */
+        .right-search-sidebar {
+      background-color: #FFF;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 440px;
+			border-radius:10px;
+			
+        }
+
+        .sidebar-widget-title {
+            font-size: 15px;
+            font-weight: 700;
+            text-align: center;
+            color: #000;
+            margin-bottom: 12px;
+        }
+
+        .popular-item-row {
+            display: flex;
+            align-items: center;
+            gap:8px;
+			
+            padding:2px 1px;
+            border-bottom: 1px solid #F1F5F9;
+            transition: var(--transition-smooth);
+        }
+
+        .popular-item-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .popular-item-row:hover {
+            transform: translateX(3px);
+        }
+
+        .row-image-placeholder {
+            width: 120px;
+            height: 80px;
+            background-color: #f1f5f9;
+            border-radius: 4px;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .row-text-details h5 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .row-text-details p {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 1px;
+        }
+
+        .post-action-btn {
+            display: block;
+            text-align: center;
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            padding: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 4px;
+            transition: var(--transition-smooth);
+        }
+
+        .post-action-btn:hover {
+            background-color: var(--accent-red);
+            color: #FFF;
+        }
+
+        /* ==========================================================================
+           5. BOTTOM RAKBANK PROMO BAR CAROUSEL
+           ========================================================================== */
+        .bottom-promo-wrapper {
+            background-color: var(--maroon-banner);
+            margin: 0 15px 25px 15px;
+            position: relative;
+            height: 55px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+        }
+
+        .promo-slider-track {
+            display: flex;
+            width: 200%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .promo-slide-frame {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+            color: #FFF;
+        }
+
+        .promo-branding-side {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .promo-arrow-action {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.2);
+            border: none;
+            color: #FFF;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+        }
+
+        .promo-arrow-action:hover {
+            background: rgba(0,0,0,0.5);
+        }
+
+        .promo-arrow-action.left-dir { left: 15px; }
+        .promo-arrow-action.right-dir { right: 15px; }
+
+        .brand-logo-text {
+            font-weight: 800;
+            font-size: 16px;
+        }
+
+        .brand-logo-text span {
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .brand-message-split {
+            border-left: 1px solid rgba(255,255,255,0.3);
+            padding-left: 15px;
+            font-size: 13px;
+        }
+
+        .brand-message-split strong {
+            font-weight: 700;
+        }
+
+        .promo-mid-desc {
+            font-size: 13px;
+        }
+
+        .promo-code-terminal {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .code-pill {
+            background-color: #FFF;
+            color: #000;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 2px;
+        }
+
+        .ts-apply {
+            font-size: 9px;
+            opacity: 0.6;
+        }
+
+        /* ==========================================================================
+           RESPONSIVE RE-SCHEDULING RULES (MOBILE DEVICES)
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .hero-section-grid {
+                grid-template-columns: 1fr;
+            }
+            .category-container, .right-search-sidebar {
+                display: none; 
+            }
+            .search-floating-engine {
+                width: 80%;
             }
         }
-    </script>
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* Smooth Scroll & Custom Scrollbar styling */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-        
-        /* Diagonal split clip-path for professional look matching the original screenshot */
-        .diagonal-split {
-            clip-path: polygon(0 0, 48% 0, 38% 100%, 0 100%);
-        }
+
         @media (max-width: 768px) {
-            .diagonal-split {
-                clip-path: none;
+            .top-bar {
+                display: none;
+            }
+
+            .mobile-menu-icon {
+                display: block;
+            }
+
+            .nav-menu-right {
+                position: fixed;
+                top: 52px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 52px);
+                background-color: #FFF;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 25px;
+                gap: 18px;
+                box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+                transition: var(--transition-smooth);
+                z-index: 999;
+            }
+
+            .nav-menu-right.drawer-open {
+                left: 0;
+            }
+
+            .nav-tools-group {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                gap: 18px;
+                padding-left: 0;
+                padding-top: 15px;
+                border-top: 1px solid var(--border-color);
+            }
+
+            .carousel-view-window {
+                height: 280px;
+            }
+
+            .main-hero-slide::before {
+                width: 65%;
+            }
+
+            .slide-inner-content h1 {
+                font-size: 22px;
+            }
+
+            .search-floating-engine {
+                width: 85%;
+                top: 22%;
+            }
+
+            .bottom-promo-wrapper {
+                height: auto;
+                padding: 12px 0;
+            }
+
+            .promo-slide-frame {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+                padding: 0 40px;
+            }
+
+            .promo-branding-side {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .brand-message-split {
+                border-left: none;
+                padding-left: 0;
             }
         }
     </style>
 </head>
-<body class="bg-[#f8fafc] text-slate-800 font-sans min-h-screen antialiased flex flex-col justify-between">
+<body>
 
-    <!-- TOP BAR -->
-    <div class="bg-[#f1f5f9] border-b border-slate-200 text-xs text-slate-600 py-2.5 px-4 md:px-8">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-            <div class="flex items-center gap-2">
-                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="font-medium">Welcome to B2BDubai24.com</span>
-            </div>
-            <div class="flex items-center gap-5 flex-wrap justify-center">
-                <a href="mailto:info@b2bdubai24.com" class="hover:text-slate-900 transition flex items-center gap-1.5">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    info@b2bdubai24.com
-                </a>
-                <a href="#" onclick="openModal('help')" class="hover:text-slate-900 transition">Help Center</a>
-                <a href="#" onclick="openModal('about')" class="hover:text-slate-900 transition">About Us</a>
-                <a href="#" onclick="openModal('contact')" class="hover:text-slate-900 transition">Contact Us</a>
-                <button onclick="openModal('join')" class="bg-slate-950 text-white font-medium px-4 py-1 rounded-full hover:bg-slate-800 transition duration-200">
-                    Join Free
-                </button>
-            </div>
+
+    <nav class="main-nav">
+        <div class="mobile-menu-icon" id="drawerTrigger">
+            <i class="fa-solid fa-bars"></i>
         </div>
-    </div>
 
-    <!-- MAIN BRAND HEADER (YELLOW BAR) -->
-    <header class="bg-brandYellow py-4 px-4 md:px-8 shadow-sm">
-        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8">
+        <div class="logo-wrap">
+            <div class="logo-text">B2B24</div>
+            <div class="logo-subtext">Connecting buyers</div>
+        </div>
+
+        <div class="nav-menu-right" id="mobileDrawer">
+            <a href="#" class="nav-link-item">Supplier</a>
+            <a href="#" class="nav-link-item">Buyers</a>
+			  <a href="#" class="nav-link-item">AI Agent</a>
+			    <a href="#" class="nav-link-item">About Us</a>
+				 <a href="#" class="nav-link-item">Contact</a>
+				  <a href="#" class="nav-link-item">Top Rank</a>
             
-            <!-- Logo Section -->
-            <div class="flex items-center justify-between w-full lg:w-auto">
-                <a href="#" class="flex items-center gap-2">
-                    <!-- Custom SVG Interlocking Loops -->
-                    <div class="relative w-10 h-10 flex items-center justify-center">
-                        <svg viewBox="0 0 100 100" class="w-10 h-10">
-                            <!-- Left Loop (Blue) -->
-                            <circle cx="38" cy="50" r="22" fill="none" stroke="#1e3a8a" stroke-width="10" opacity="0.9"/>
-                            <!-- Right Loop (Red) -->
-                            <circle cx="62" cy="50" r="22" fill="none" stroke="#ef4444" stroke-width="10" opacity="0.9"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="text-2xl font-black text-slate-900 tracking-tight leading-none block">B2B24</span>
-                        <span class="text-[10px] font-semibold text-slate-700 uppercase tracking-widest block">Connecting buyers</span>
-                    </div>
-                </a>
-                
-                <!-- Quick Mobile Toggle Menu -->
-                <button class="lg:hidden p-2 text-slate-950 focus:outline-none" onclick="toggleMobileNav()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-
-            <!-- Enhanced Search Engine -->
-            <div class="w-full max-w-2xl relative">
-                <div class="bg-white rounded-full shadow-md flex items-center border border-slate-200/50 hover:border-slate-300 focus-within:ring-2 focus-within:ring-brandBlue/20 transition duration-200 pl-4 overflow-hidden">
-                    <input 
-                        type="text" 
-                        placeholder="Search for products, brands, suppliers..." 
-                        class="w-full text-sm text-slate-700 bg-transparent focus:outline-none py-3.5 pr-2 placeholder:text-slate-400">
-                    <div class="flex items-center gap-3.5 pr-4 text-slate-400">
-                        <!-- Camera / Lens Search SVG -->
-                        <button class="hover:text-brandBlue transition" title="Search by Image">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0110 3h4a2.31 2.31 0 013.173 3.175l.173.346a1.155 1.155 0 001.033.642H20a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V9.163a2 2 0 012-2h1.173a1.155 1.155 0 001.033-.642l.173-.346z"></path><circle cx="12" cy="13" r="3" stroke-linecap="round" stroke-linejoin="round"></circle></svg>
-                        </button>
-                        <!-- Voice Search SVG -->
-                        <button class="hover:text-brandBlue transition" title="Voice Search">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
-                        </button>
-                        <!-- Main Search Trigger -->
-                        <button class="bg-brandBlue text-white p-2.5 rounded-full hover:bg-slate-800 transition shadow-sm ml-2">
-                            <svg class="w-4.5 h-4.5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Upper Navigation Right Elements -->
-            <div class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-900">
-                <a href="#" class="hover:underline transition">Supplier</a>
-                <a href="#" class="hover:underline transition">Buyers</a>
-                
-                <!-- Separator Line -->
-                <div class="h-4 w-[1px] bg-slate-400/40"></div>
-
-                <!-- Flag Selector -->
-                <button class="flex items-center gap-1.5 hover:opacity-80 transition">
-                    <!-- Custom SVG UAE Flag -->
-                    <div class="w-5 h-3.5 flex overflow-hidden rounded-[2px] border border-black/10">
-                        <div class="w-1.5 bg-red-600 h-full"></div>
-                        <div class="flex-1 flex flex-col">
-                            <div class="h-1/3 bg-green-700"></div>
-                            <div class="h-1/3 bg-white"></div>
-                            <div class="h-1/3 bg-black"></div>
-                        </div>
-                    </div>
+            <div class="nav-tools-group">
+                <div class="flag-dropdown">
+                    <div class="flag-icon-mock"></div>
                     <span>AED</span>
-                </button>
-
-                <!-- Language Selector -->
-                <button class="flex items-center gap-1.5 hover:opacity-80 transition text-xs font-bold bg-slate-900/10 px-2 py-1 rounded">
-                    <svg class="w-4 h-4 text-slate-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i>
+                </div>
+                <div class="flag-dropdown">
+                    <i class="fa-solid fa-earth-americas" style="color:#333;"></i>
                     <span>EN</span>
-                </button>
-
-                <!-- Sign in -->
-                <button onclick="openModal('signin')" class="hover:text-slate-700 flex items-center gap-1">
-                    Sign In / Reg
-                </button>
-
-                <!-- Heart Icon -->
-                <a href="#" class="text-slate-900 hover:text-red-500 transition relative">
-                    <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                </a>
-
-                <!-- Notification Bell with count -->
-                <a href="#" class="text-slate-900 hover:text-amber-500 transition relative">
-                    <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-                    <span class="absolute -top-1.5 -right-1.5 bg-brandCrimson text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center border border-white">3</span>
-                </a>
+                </div>
+                 <a href="#" class="btn-join-free">Sign In/Reg</a> 
+                
+                <div class="tool-icon">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="tool-icon">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="badge-count">3</span>
+                </div>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- HORIZONTAL SCROLLING CATEGORY BAR -->
-    <div class="bg-white border-b border-slate-200 py-3 shadow-sm px-4 md:px-8">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-x-auto custom-scrollbar whitespace-nowrap scroll-smooth">
-            
-            <!-- Category Item -->
-            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
-                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">🔧</span>
-                <span>Components</span>
-            </a>
-
-            <!-- Category Item -->
-            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
-                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">⌚</span>
-                <span>Smart Wearables</span>
-            </a>
-
-            <!-- Category Item -->
-            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
-                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">🎮</span>
-                <span>Gaming Hub</span>
-            </a>
-
-            <!-- Category Item -->
-            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
-                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">📷</span>
-                <span>Cameras & Optics</span>
-            </a>
-
-            <!-- Category Item -->
-            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
-                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">🐱</span>
-                <span>Household & Pets</span>
-            </a>
-
-            <!-- Category Item -->
-            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
-                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">💻</span>
-                <span>Electronics</span>
-            </a>
-
-            <!-- Category Item -->
-            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
-                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">📱</span>
-                <span>Mobile Phones</span>
-            </a>
-
-            <!-- Category Item -->
-            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
-                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">🛏️</span>
-                <span>Home Furniture</span>
-            </a>
-
-            <!-- Category Item -->
-            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
-                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">🧥</span>
-                <span>Fashion & Apparel</span>
-            </a>
-
-            <!-- Repeat for layout matching symmetry -->
-            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
-                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">🔧</span>
-                <span>Components</span>
-            </a>
-
-            <a href="#" class="flex items-center gap-2 px-3 py-1 bg-slate-50 hover:bg-slate-100 rounded-full transition text-xs font-medium text-slate-700 group shrink-0">
-                <span class="p-1 rounded-full bg-slate-200 text-slate-600 group-hover:bg-slate-300 transition">⌚</span>
-                <span>Smart Devices</span>
-            </a>
-        </div>
+    <div class="second-navbar">
+        <div class="sec-nav-link"><i class="fa-solid fa-microchip"></i> Components</div>
+        <div class="sec-nav-link"><i class="fa-solid fa-clock"></i> Smart Wearables</div>
+        <div class="sec-nav-link"><i class="fa-solid fa-gamepad"></i> Gaming Hub</div>
+        <div class="sec-nav-link"><i class="fa-solid fa-camera"></i> Cameras & Optics</div>
+        <div class="sec-nav-link"><i class="fa-solid fa-couch"></i> Household & Pets</div>
+        <div class="sec-nav-link"><i class="fa-solid fa-laptop"></i> Electronics</div>
+        <div class="sec-nav-link"><i class="fa-solid fa-mobile-screen-button"></i> Mobile Phones</div>
+        <div class="sec-nav-link"><i class="fa-solid fa-shirt"></i> Fashion & Apparel</div>
+		        <div class="sec-nav-link"><i class="fa-solid fa-couch"></i> Household & Pets</div>
+        <div class="sec-nav-link"><i class="fa-solid fa-laptop"></i> Electronics</div>
+        <div class="sec-nav-link"><i class="fa-solid fa-mobile-screen-button"></i> Mobile Phones</div>
+        <div class="sec-nav-link"><i class="fa-solid fa-shirt"></i> Fashion & Apparel</div>
     </div>
 
-    <!-- MAIN GRID CONTAINER (THREE-COLUMN HERO REGION) -->
-    <main class="max-w-7xl mx-auto py-6 px-4 md:px-8 w-full flex-grow">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-stretch">
-            
-            <!-- COLUMN 1: ALL CATEGORIES VERTICAL LIST (LEFT) -->
-            <div class="lg:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[460px]">
-                <div class="bg-slate-50 border-b border-slate-200 py-4 px-5">
-                    <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
+
+
+
+
+    <div class="hero-section-grid">
+        
+        <aside class="category-container">
+            <div class="cat-header">All Categories</div>
+            <div class="cat-scroll-list">
+                <div class="cat-menu-item"><a href="#" style="color: var(--accent-red); font-weight:700;">Consumer Electronics <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Mobile Electronics <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Smart Living Electronics <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Electronic Components <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Household & Pets <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Sports & Outdoors <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Fashion Accessories & Footwear <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Living Items <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Pet Components <i class="fa-solid fa-chevron-right"></i></a></div>
+				<div class="cat-menu-item"><a href="#">Mobile Electronics <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Smart Living Electronics <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Electronic Components <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Household & Pets <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Sports & Outdoors <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Fashion Accessories & Footwear <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Living Items <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Pet Components <i class="fa-solid fa-chevron-right"></i></a></div>
+				<div class="cat-menu-item"><a href="#">Fashion Accessories & Footwear <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Living Items <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Pet Components <i class="fa-solid fa-chevron-right"></i></a></div>
+				<div class="cat-menu-item"><a href="#">Mobile Electronics <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Smart Living Electronics <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Electronic Components <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Household & Pets <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Sports & Outdoors <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Fashion Accessories & Footwear <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Living Items <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Pet Components <i class="fa-solid fa-chevron-right"></i></a></div>
+            </div>
+        </aside>
+
+        <main class="carousel-view-window">
+            <div class="search-floating-engine">
+                <input type="text" placeholder="Search Your Products...">
+                <div class="search-input-actions">
+                    <i class="fa-solid fa-camera"></i>
+                    <i class="fa-solid fa-microphone"></i>
+                    <i class="fa-solid fa-magnifying-glass" style="color: #3b82f6;"></i>
+                </div>
+            </div>
+
+            <div class="carousel-container-track" id="heroTrack">
+                <div class="main-hero-slide" style="background-image: url('https://i.ibb.co/RGnzTV70/banner.png');">
+                    <div class="slide-inner-content">
+                        <h1>FURNITURE FOR EVERY MOMENT</h1>
+                        <p>UPTO 35% OFF!</p>
+                        <a href="#" class="shop-btn-link">Shop Now</a>
+                    </div>
+                </div>
+                <div class="main-hero-slide" style="background-image: url('https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1000&q=80');">
+                    <div class="slide-inner-content">
+                        <h1>BULK SOURCING SIMPLIFIED</h1>
+                        <p>DIRECT SUPPLIER RATES</p>
+                        <a href="#" class="shop-btn-link">Learn More</a>
+                    </div>
+                </div>
+                <div class="main-hero-slide" style="background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=80');">
+                    <div class="slide-inner-content">
+                        <h1>GLOBAL B2B MARKETPLACE</h1>
+                        <p>FAST TRACK LOGISTICS</p>
+                        <a href="#" class="shop-btn-link">Browse Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="indicator-dots-group">
+                <div class="dot-node active-state" onclick="shiftToSlide(0)"></div>
+                <div class="dot-node" onclick="shiftToSlide(1)"></div>
+                <div class="dot-node" onclick="shiftToSlide(2)"></div>
+            </div>
+        </main>
+
+        <aside class="right-search-sidebar">
+            <div>
+                <div class="sidebar-widget-title">Popular Search</div>
                 
-                        All Categories
-                    </h3>
-                </div>
-                
-                <!-- Long Scrollable Category List -->
-                <div class="overflow-y-auto custom-scrollbar flex-1 divide-y divide-slate-100">
-                    
-                    <!-- Highlighted Active Category -->
-                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-brandCrimson font-bold bg-rose-50/50 hover:bg-rose-50 transition">
-                        <span>Consumer Electronics</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-
-                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
-                        <span>Mobile Electronics</span>
-                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-
-                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
-                        <span>Smart Living Electronics</span>
-                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-
-                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
-                        <span>Electronic Components</span>
-                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-
-                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
-                        <span>Household & Pets</span>
-                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-
-                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
-                        <span>Sports & Outdoors</span>
-                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-
-                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
-                        <span>Fashion Accessories</span>
-                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-
-                    <!-- Extra items for matches screen -->
-                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
-                        <span>Living Items</span>
-                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-
-                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
-                        <span>Pet Components</span>
-                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-
-                    <a href="#" class="flex items-center justify-between py-3 px-5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
-                        <span>Tailor Household & Decor</span>
-                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- COLUMN 2: HERO BANNER CAROUSEL (MIDDLE) -->
-            <div class="lg:col-span-6 bg-slate-900 rounded-xl overflow-hidden shadow-md relative h-[460px] group">
-                
-                <!-- Dynamic Slides -->
-                <div id="slide-1" class="absolute inset-0 w-full h-full block transition-all duration-700 ease-in-out opacity-100 z-10">
-                    <!-- Right Side Bedroom image -->
-                    <img 
-                        src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80" 
-                        alt="Modern Bedroom Design" 
-                        class="absolute right-0 top-0 h-full w-full object-cover"
-                    >
-                    
-                    <!-- Left Diagonal Cut (Brand Navy Blue) -->
-                    <div class="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#0a0f2b] via-[#121940] to-transparent diagonal-split z-10 flex flex-col justify-center px-8 lg:px-14">
-                        <div class="max-w-[70%] sm:max-w-[50%] lg:max-w-[60%] text-white">
-                            <h2 class="text-3xl lg:text-4.5xl font-extrabold tracking-tight leading-none mb-3 uppercase">
-                                Furniture for<br><span class="text-brandYellow">every moment</span>
-                            </h2>
-                            <p class="text-rose-500 font-bold text-lg mb-6 tracking-wide">UPTO 35% OFF!</p>
-                            <a href="#" class="inline-flex items-center gap-2 bg-white text-slate-950 px-6 py-3 rounded-full font-bold text-sm shadow-lg hover:bg-slate-100 hover:shadow-xl transition duration-200">
-                                Shop Now
-                                <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                            </a>
-                        </div>
+                <div class="popular-item-row">
+                    <div class="row-image-placeholder" style="background-image: url('https://i.ibb.co/JW3HXrqB/93c69f40-9322-4309-8142-d886a54aad5f-h.jpg');"></div>
+                    <div class="row-text-details">
+                        <h5>Home Furniture</h5>
+                        <p>30,000+ Products</p>
                     </div>
                 </div>
 
-                <div id="slide-2" class="absolute inset-0 w-full h-full block transition-all duration-700 ease-in-out opacity-0 z-0">
-                    <img 
-                        src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80" 
-                        alt="Office Furnitures" 
-                        class="absolute right-0 top-0 h-full w-full object-cover"
-                    >
-                    <div class="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#0d3423] via-[#144731] to-transparent diagonal-split z-10 flex flex-col justify-center px-8 lg:px-14">
-                        <div class="max-w-[70%] sm:max-w-[50%] lg:max-w-[60%] text-white">
-                            <h2 class="text-3xl lg:text-4.5xl font-extrabold tracking-tight leading-none mb-3 uppercase">
-                                Upgrade Your<br><span class="text-emerald-400">Workspace</span>
-                            </h2>
-                            <p class="text-amber-400 font-bold text-lg mb-6 tracking-wide">EXECUTIVE SAVINGS</p>
-                            <a href="#" class="inline-flex items-center gap-2 bg-white text-slate-950 px-6 py-3 rounded-full font-bold text-sm shadow-lg hover:bg-slate-100 hover:shadow-xl transition duration-200">
-                                Explore Office
-                                <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                            </a>
-                        </div>
+                <div class="popular-item-row">
+                    <div class="row-image-placeholder" style="background-image: url('https://i.ibb.co/4w5qpf5t/images-1.jpg');"></div>
+                    <div class="row-text-details">
+                        <h5>Home Furniture</h5>
+                        <p>30,000+ Products</p>
                     </div>
                 </div>
 
-                <div id="slide-3" class="absolute inset-0 w-full h-full block transition-all duration-700 ease-in-out opacity-0 z-0">
-                    <img 
-                        src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=80" 
-                        alt="Smart Tech Living" 
-                        class="absolute right-0 top-0 h-full w-full object-cover"
-                    >
-                    <div class="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#311145] via-[#481d63] to-transparent diagonal-split z-10 flex flex-col justify-center px-8 lg:px-14">
-                        <div class="max-w-[70%] sm:max-w-[50%] lg:max-w-[60%] text-white">
-                            <h2 class="text-3xl lg:text-4.5xl font-extrabold tracking-tight leading-none mb-3 uppercase">
-                                Smart Living<br><span class="text-indigo-300">Technology</span>
-                            </h2>
-                            <p class="text-brandYellow font-bold text-lg mb-6 tracking-wide">CONNECT YOUR HOME</p>
-                            <a href="#" class="inline-flex items-center gap-2 bg-white text-slate-950 px-6 py-3 rounded-full font-bold text-sm shadow-lg hover:bg-slate-100 hover:shadow-xl transition duration-200">
-                                View Gadgets
-                                <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                            </a>
-                        </div>
+                <div class="popular-item-row">
+                    <div class="row-image-placeholder" style="background-image: url('https://i.ibb.co/RGnzTV70/banner.png');"></div>
+                    <div class="row-text-details">
+                        <h5>Home Furniture</h5>
+                        <p>30,000+ Products</p>
                     </div>
                 </div>
-
-                <!-- Slide indicator dots -->
-                <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20 bg-black/30 backdrop-blur-md px-3 py-1.5 rounded-full">
-                    <button onclick="goToSlide(1)" id="dot-1" class="w-2.5 h-2.5 rounded-full bg-white transition"></button>
-                    <button onclick="goToSlide(2)" id="dot-2" class="w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/60 transition"></button>
-                    <button onclick="goToSlide(3)" id="dot-3" class="w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/60 transition"></button>
-                </div>
-
-                <!-- Left/Right Slide Arrows on hover -->
-                <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 z-30">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
-                </button>
-                <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 z-30">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                </button>
-            </div>
-
-            <!-- COLUMN 3: POPULAR SEARCH & DIRECT REQUESTS (RIGHT) -->
-            <div class="lg:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-[460px] justify-between">
-                <div>
-                    <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 flex items-center justify-between">
-                        <span>Popular Search</span>
-                        <span class="text-xs text-brandCrimson hover:underline cursor-pointer">View all</span>
-                    </h3>
-                    
-                    <!-- Search Items Vertical List -->
-                    <div class="space-y-3">
-                        
-                        <!-- Row 1 -->
-                        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition border border-slate-100 cursor-pointer">
-                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=120&q=80" alt="Sofa" class="w-12 h-12 rounded object-cover border border-slate-200">
-                            <div>
-                                <h4 class="text-xs font-semibold text-slate-900">Home Furniture</h4>
-                                <span class="text-[10px] text-slate-500 font-medium block">30,000+ Products</span>
-                            </div>
-                        </div>
-
-                        <!-- Row 2 -->
-                        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition border border-slate-100 cursor-pointer">
-                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=120&q=80" alt="Desk" class="w-12 h-12 rounded object-cover border border-slate-200">
-                            <div>
-                                <h4 class="text-xs font-semibold text-slate-900">Home Furniture</h4>
-                                <span class="text-[10px] text-slate-500 font-medium block">50,000+ Products</span>
-                            </div>
-                        </div>
-
-                        <!-- Row 3 -->
-                        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition border border-slate-100 cursor-pointer">
-                            <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=120&q=80" alt="Modern Chair" class="w-12 h-12 rounded object-cover border border-slate-200">
-                            <div>
-                                <h4 class="text-xs font-semibold text-slate-900">Home Furniture</h4>
-                                <span class="text-[10px] text-slate-500 font-medium block">60,000+ Products</span>
-                            </div>
-                        </div>
-
-                        <!-- Row 4 -->
-                        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition border border-slate-100 cursor-pointer">
-                            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=120&q=80" alt="Bed Design" class="w-12 h-12 rounded object-cover border border-slate-200">
-                            <div>
-                                <h4 class="text-xs font-semibold text-slate-900">Home Furniture</h4>
-                                <span class="text-[10px] text-slate-500 font-medium block">20,000+ Products</span>
-                            </div>
-                        </div>
-
-                        <!-- Row 5 -->
-                        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition border border-slate-100 cursor-pointer">
-                            <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=120&q=80" alt="Sofa Furniture" class="w-12 h-12 rounded object-cover border border-slate-200">
-                            <div>
-                                <h4 class="text-xs font-semibold text-slate-900">Sofa Furniture</h4>
-                                <span class="text-[10px] text-slate-500 font-medium block">70,000+ Products</span>
-                            </div>
-                        </div>
-
+				
+				        <div class="popular-item-row">
+                    <div class="row-image-placeholder" style="background-image: url('https://i.ibb.co/JW3HXrqB/93c69f40-9322-4309-8142-d886a54aad5f-h.jpg');"></div>
+                    <div class="row-text-details">
+                        <h5>Home Furniture</h5>
+                        <p>30,000+ Products</p>
                     </div>
                 </div>
-
-                <!-- Red Border Request Action Button -->
-                <button 
-                    onclick="openModal('request')"
-                    class="w-full border-2 border-brandCrimson text-brandCrimson font-bold text-xs uppercase py-3.5 rounded-lg hover:bg-brandCrimson hover:text-white transition duration-200 text-center block tracking-wide mt-2"
-                >
-                    Post Your Request Now
-                </button>
             </div>
 
-        </div>
-    </main>
+            <a href="#" class="post-action-btn">Post Your Request Now</a>
+        </aside>
 
-    <!-- PROMOTIONAL BOTTOM BANNER CAROUSEL (Burgundy/RAKBANK Theme) -->
-    <section class="max-w-7xl mx-auto w-full px-4 md:px-8 pb-8">
-        <div id="promo-carousel" class="relative bg-rakBurgundy rounded-xl overflow-hidden shadow-lg p-5 md:p-6 text-white min-h-[100px] flex items-center">
-            
-            <!-- Carousel Content Slide 1 -->
-            <div id="promo-slide-1" class="w-full flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-500 opacity-100">
-                <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
-                    <!-- Custom simulated RAKBANK Logo -->
-                    <div class="flex flex-col items-center md:items-start bg-white/10 px-4 py-2 rounded border border-white/20">
-                        <span class="text-lg font-black tracking-tight text-white leading-none">RAKBANK</span>
-                        <span class="text-[9px] text-brandYellow font-semibold uppercase tracking-wider block mt-1">50 years with you</span>
-                    </div>
-                    
-                    <div class="space-y-1">
-                        <h4 class="text-xl md:text-2xl font-black tracking-wide flex items-center justify-center md:justify-start gap-2">
-                            <span class="text-brandYellow">0% Interest</span> Installments
-                        </h4>
-                        <p class="text-sm text-slate-300 font-medium">For Up To 12 Months</p>
-                    </div>
+    </div>
+	
+	
+	
+	
+	
+	
+
+    <div class="bottom-promo-wrapper">
+        <button class="promo-arrow-action left-dir" onclick="cyclePromo(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="promo-arrow-action right-dir" onclick="cyclePromo(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        
+        <div class="promo-slider-track" id="promoTrackLine">
+            <div class="promo-slide-frame">
+                <div class="promo-branding-side">
+                    <div class="brand-logo-text">RAKBANK <span>50 years with you</span></div>
+                    <div class="brand-message-split"><strong>0% Interest</strong> Installments</div>
                 </div>
-
-                <div class="flex items-center gap-3 flex-wrap justify-center">
-                    <span class="bg-white/10 border border-white/20 text-xs py-2 px-3.5 rounded font-mono font-bold tracking-wider">
-                        Use Code: <span class="text-brandYellow">ZERO50</span>
-                    </span>
-                    <span class="text-[10px] text-slate-400 font-medium">*T&Cs apply</span>
+                <div class="promo-mid-desc">For Up To 12 Months</div>
+                <div class="promo-code-terminal">
+                    <div class="code-pill">Use Code: ZERO50</div>
+                    <span class="ts-apply">*T&Cs apply</span>
                 </div>
             </div>
-
-            <!-- Carousel Content Slide 2 -->
-            <div id="promo-slide-2" class="w-full flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-500 opacity-0 hidden">
-                <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
-                    <div class="flex flex-col items-center md:items-start bg-white/10 px-4 py-2 rounded border border-white/20">
-                        <span class="text-lg font-black tracking-tight text-white leading-none">B2B DUBAI</span>
-                        <span class="text-[9px] text-brandYellow font-semibold uppercase tracking-wider block mt-1">EXPORTER DEAL</span>
-                    </div>
-                    
-                    <div class="space-y-1">
-                        <h4 class="text-xl md:text-2xl font-black tracking-wide text-brandYellow">
-                            Global Supply Chain Shipping
-                        </h4>
-                        <p class="text-sm text-slate-300 font-medium">Get flat 15% discount on container booking</p>
-                    </div>
+            <div class="promo-slide-frame">
+                <div class="promo-branding-side">
+                    <div class="brand-logo-text">RAKBANK <span>Corporate</span></div>
+                    <div class="brand-message-split"><strong>Instant Cashback</strong> Offers</div>
                 </div>
-
-                <div class="flex items-center gap-3 flex-wrap justify-center">
-                    <span class="bg-white/10 border border-white/20 text-xs py-2 px-3.5 rounded font-mono font-bold tracking-wider">
-                        Use Code: <span class="text-brandYellow">SHIPFREE</span>
-                    </span>
-                </div>
-            </div>
-
-            <!-- Left and Right Arrows on the Side -->
-            <button onclick="prevPromo()" class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/30 hover:bg-black/50 text-white flex items-center justify-center transition border border-white/10">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
-            </button>
-            <button onclick="nextPromo()" class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/30 hover:bg-black/50 text-white flex items-center justify-center transition border border-white/10">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-            </button>
-
-            <!-- Bottom slide dots -->
-            <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
-                <div id="promo-dot-1" class="w-1.5 h-1.5 rounded-full bg-white transition"></div>
-                <div id="promo-dot-2" class="w-1.5 h-1.5 rounded-full bg-white/30 transition"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p>&copy; 2026 B2B24 Dubai. All rights reserved.</p>
-            <div class="flex gap-4">
-                <a href="#" class="hover:underline">Privacy Policy</a>
-                <a href="#" class="hover:underline">Terms of Service</a>
-                <a href="#" class="hover:underline">Sitemap</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- INTERACTIVE MOCK MODAL / ALERTS SYSTEM -->
-    <div id="info-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center z-50 hidden p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-slate-100 overflow-hidden transform scale-95 transition-transform duration-300">
-            <!-- Modal Header -->
-            <div class="bg-slate-50 border-b border-slate-100 py-4 px-6 flex items-center justify-between">
-                <h4 id="modal-title" class="font-bold text-slate-800 text-base">Notification</h4>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 transition">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-            <!-- Modal Body -->
-            <div class="p-6 space-y-4">
-                <div id="modal-desc" class="text-sm text-slate-600 leading-relaxed">
-                    Welcome to the improved Dubai B2B portal template!
-                </div>
-                <div class="flex justify-end">
-                    <button onclick="closeModal()" class="bg-brandBlue text-white font-semibold px-5 py-2 rounded-lg text-xs hover:bg-slate-800 transition">
-                        Understood
-                    </button>
+                <div class="promo-mid-desc">On Enterprise Processing Plans</div>
+                <div class="promo-code-terminal">
+                    <div class="code-pill">Use Code: B2BMAX</div>
+                    <span class="ts-apply">*T&Cs apply</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MAIN APP JAVASCRIPT CONTROLLER -->
     <script>
-        // Hero Slide States
-        let currentSlide = 1;
-        const totalSlides = 3;
+        // Drawer toggle mechanics for smaller viewports
+        const drawerTrigger = document.getElementById('drawerTrigger');
+        const mobileDrawer = document.getElementById('mobileDrawer');
 
-        function updateSlideUI() {
-            for (let i = 1; i <= totalSlides; i++) {
-                const slide = document.getElementById(`slide-${i}`);
-                const dot = document.getElementById(`dot-${i}`);
-                if (i === currentSlide) {
-                    slide.classList.remove('opacity-0', 'z-0');
-                    slide.classList.add('opacity-100', 'z-10');
-                    dot.classList.remove('bg-white/40');
-                    dot.classList.add('bg-white');
-                } else {
-                    slide.classList.remove('opacity-100', 'z-10');
-                    slide.classList.add('opacity-0', 'z-0');
-                    dot.classList.remove('bg-white');
-                    dot.classList.add('bg-white/40');
-                }
+        drawerTrigger.addEventListener('click', () => {
+            mobileDrawer.classList.toggle('drawer-open');
+            const innerIcon = drawerTrigger.querySelector('i');
+            if(mobileDrawer.classList.contains('drawer-open')) {
+                innerIcon.className = "fa-solid fa-xmark";
+            } else {
+                innerIcon.className = "fa-solid fa-bars";
             }
+        });
+
+        // Banner Track sliding execution logic
+        const heroTrack = document.getElementById('heroTrack');
+        const dotsList = document.querySelectorAll('.dot-node');
+        let activeIndex = 0;
+
+        function shiftToSlide(index) {
+            activeIndex = index;
+            heroTrack.style.transform = `translateX(-${activeIndex * 33.3333}%)`;
+            dotsList.forEach(node => node.classList.remove('active-state'));
+            dotsList[activeIndex].classList.add('active-state');
         }
 
-        function nextSlide() {
-            currentSlide = currentSlide === totalSlides ? 1 : currentSlide + 1;
-            updateSlideUI();
+        function runAutoLoop() {
+            activeIndex = (activeIndex + 1) % 3;
+            shiftToSlide(activeIndex);
         }
+        let sliderTimer = setInterval(runAutoLoop, 5000);
 
-        function prevSlide() {
-            currentSlide = currentSlide === 1 ? totalSlides : currentSlide - 1;
-            updateSlideUI();
-        }
+        // Promo Strip sliding workflow execution
+        const promoTrackLine = document.getElementById('promoTrackLine');
+        let activePromoIndex = 0;
 
-        function goToSlide(num) {
-            currentSlide = num;
-            updateSlideUI();
-        }
-
-        // Auto transition hero slides
-        let heroInterval = setInterval(nextSlide, 6000);
-
-        // Reset auto transition on user click
-        function resetHeroInterval() {
-            clearInterval(heroInterval);
-            heroInterval = setInterval(nextSlide, 6000);
-        }
-
-        // Promotional Banner State Controller
-        let currentPromo = 1;
-        const totalPromos = 2;
-
-        function updatePromoUI() {
-            for (let i = 1; i <= totalPromos; i++) {
-                const slide = document.getElementById(`promo-slide-${i}`);
-                const dot = document.getElementById(`promo-dot-${i}`);
-                if (i === currentPromo) {
-                    slide.classList.remove('opacity-0', 'hidden');
-                    slide.classList.add('opacity-100');
-                    dot.classList.remove('bg-white/30');
-                    dot.classList.add('bg-white');
-                } else {
-                    slide.classList.remove('opacity-100');
-                    slide.classList.add('opacity-0', 'hidden');
-                    dot.classList.remove('bg-white');
-                    dot.classList.add('bg-white/30');
-                }
-            }
-        }
-
-        function nextPromo() {
-            currentPromo = currentPromo === totalPromos ? 1 : currentPromo + 1;
-            updatePromoUI();
-        }
-
-        function prevPromo() {
-            currentPromo = currentPromo === 1 ? totalPromos : currentPromo - 1;
-            updatePromoUI();
-        }
-
-        // Interactive Modals
-        function openModal(type) {
-            const modal = document.getElementById('info-modal');
-            const title = document.getElementById('modal-title');
-            const desc = document.getElementById('modal-desc');
-
-            if (type === 'help') {
-                title.innerText = 'Help Center';
-                desc.innerHTML = `<p>Welcome to B2B24 Help & Support center.</p>
-                <ul class="list-disc list-inside mt-2 space-y-1">
-                    <li>How do I post a buying request?</li>
-                    <li>Sourcing products in Dubai Jebel Ali Freezone.</li>
-                    <li>Connecting directly to verified UAE Gold/Bulk wholesalers.</li>
-                </ul>`;
-            } else if (type === 'about') {
-                title.innerText = 'About B2BDubai24';
-                desc.innerText = 'B2B24 connects premium suppliers, manufacturers, and international buyers within the UAE and Gulf region. Our modernized framework accelerates direct commercial trade pipelines.';
-            } else if (type === 'contact') {
-                title.innerText = 'Contact Corporate Office';
-                desc.innerHTML = `<p class="font-semibold text-slate-800">B2BDubai24 HQ</p>
-                <p>Sheikh Zayed Road, Downtown Dubai, UAE</p>
-                <p class="mt-2 text-brandCrimson font-bold">Hotline: +971 4 000 0000</p>`;
-            } else if (type === 'join') {
-                title.innerText = 'Registration Portal';
-                desc.innerHTML = `<form class="space-y-3 mt-1" onsubmit="event.preventDefault(); alert('Success! Welcome to B2B24!'); closeModal();">
-                    <input type="text" placeholder="Company Legal Name" class="w-full border p-2 rounded text-xs" required />
-                    <input type="email" placeholder="Business Email Address" class="w-full border p-2 rounded text-xs" required />
-                    <button type="submit" class="w-full bg-brandBlue text-white p-2 rounded text-xs font-bold hover:bg-slate-800">Create Supplier/Buyer Profile</button>
-                </form>`;
-            } else if (type === 'signin') {
-                title.innerText = 'Sign In to Your Workspace';
-                desc.innerHTML = `<form class="space-y-3 mt-1" onsubmit="event.preventDefault(); alert('Logged in successfully!'); closeModal();">
-                    <input type="email" placeholder="Work Email" class="w-full border p-2 rounded text-xs" required />
-                    <input type="password" placeholder="Password" class="w-full border p-2 rounded text-xs" required />
-                    <button type="submit" class="w-full bg-brandBlue text-white p-2 rounded text-xs font-bold hover:bg-slate-800">Access Portal</button>
-                </form>`;
-            } else if (type === 'request') {
-                title.innerText = 'Post Buying Request (RFQ)';
-                desc.innerHTML = `<form class="space-y-3 mt-1" onsubmit="event.preventDefault(); alert('Buying request submitted! Suppliers will contact you shortly.'); closeModal();">
-                    <input type="text" placeholder="What product/service are you looking for?" class="w-full border p-2 rounded text-xs" required />
-                    <textarea placeholder="Specify quantity, estimated budget, and delivery timeline..." class="w-full border p-2 rounded text-xs h-20" required></textarea>
-                    <button type="submit" class="w-full bg-brandCrimson text-white p-2.5 rounded text-xs font-bold hover:bg-rose-700">Submit RFQ</button>
-                </form>`;
-            }
-
-            modal.classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('info-modal').classList.add('hidden');
-        }
-
-        // Toggle mobile navigation warning
-        function toggleMobileNav() {
-            alert("B2B24: Navigation optimized. Try rotating your device or using larger desktop frames for native B2B bulk editing tools!");
+        function cyclePromo(direction) {
+            activePromoIndex = (activePromoIndex + direction + 2) % 2;
+            promoTrackLine.style.transform = `translateX(-${activePromoIndex * 50}%)`;
         }
     </script>
 </body>

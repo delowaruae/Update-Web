@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,9 @@
             --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        * {
+
+
+    * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -28,10 +31,19 @@
         }
 
         body {
-            background-color: #f4f5f7;
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
+            background-color: #f4f5f7;   color: var(--text-dark);  
+			  max-width: 1440px; 
+			    margin: 0 auto;
+				   padding: 0 10px ;
+				border-radius:10px;
+				display: block;
+				overflow: auto;
+				width: 100%;
+			box-sizing: border-box; /* Ensures padding doesn't add to the width */
+			}
+
+
+ 
 
         a {
             text-decoration: none;
@@ -46,11 +58,11 @@
            1. TOP UTILITY BAR
            ========================================================================== */
         .top-bar {
-            background-color: #ADD8E6;
+            background-color: #FFF;
             border-bottom: 1px solid var(--border-color);
             font-size: 13px;
             color: #333;
-            padding: 1px 20px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -85,20 +97,22 @@
         }
 
         /* ==========================================================================
-           2. MAIN YELLOW NAVBAR
+           2. MAIN NAVBAR WITH CONSOLE SEARCH ENGINE (YELLOW)
            ========================================================================== */
         .main-nav {
             background-color: var(--primary-yellow);
-            padding: 12px 20px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
+            gap: 20px;
         }
 
         .logo-wrap {
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
         }
 
         .logo-text {
@@ -115,18 +129,60 @@
             margin-top: 2px;
         }
 
+        /* Integrated Search Bar inside Navbar */
+        .nav-search-container {
+            flex-grow: 1;
+            max-width: 550px;
+			height: 40px;
+            background-color: #FFF;
+            border-radius: 30px;
+            padding: 6px 18px;
+            display: flex;
+            align-items: center;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .nav-search-container input {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 13px;
+            color: #333;
+            background: transparent;
+        }
+
+        .nav-search-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .nav-search-actions i {
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-search-actions i:hover {
+            color: #000;
+        }
+
         .nav-menu-right {
             display: flex;
             align-items: center;
-            gap: 22px;
+            gap: 20px;
             font-size: 14px;
             font-weight: 600;
             color: #000;
+            flex-shrink: 0;
         }
 
         .nav-link-item {
             position: relative;
             padding: 4px 0;
+			
         }
 
         .nav-link-item::after {
@@ -136,34 +192,23 @@
             left: 0;
             width: 0;
             height: 2px;
+			
             background-color: #000;
             transition: var(--transition-smooth);
         }
 
         .nav-link-item:hover::after {
             width: 100%;
+			
         }
 
         .nav-tools-group {
             display: flex;
             align-items: center;
-            gap: 18px;
-            padding-left: 10px;
+            gap: 16px;
         }
 
-        .flag-dropdown {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-        }
 
-        .flag-icon-mock {
-            width: 18px;
-            height: 12px;
-            background: linear-gradient(to bottom, #ff0000 33%, #fff 33%, #fff 66%, #00ff00 66%);
-            border: 1px solid #ddd;
-        }
 
         .tool-icon {
             font-size: 18px;
@@ -176,17 +221,6 @@
             transform: scale(1.1);
         }
 
-
-    .btn-join-free {
-            background-color: #000;
-            color: #fff;
-            padding: 8px 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-        }
-		
         .badge-count {
             position: absolute;
             top: -6px;
@@ -211,24 +245,22 @@
            ========================================================================== */
         .second-navbar {
             background-color: #FFF;
-            border-bottom: 2px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             padding: 10px 20px;
-			
             display: flex;
-            gap: 20px;
+            gap: 25px;
             overflow-x: auto;
             white-space: nowrap;
+		
 			
         }
 
-        /* Standard responsive dynamic scroll management */
         .second-navbar::-webkit-scrollbar {
             height: 4px;
         }
         .second-navbar::-webkit-scrollbar-thumb {
             background: transparent;
             border-radius: 4px;
-		
         }
         .second-navbar:hover::-webkit-scrollbar-thumb {
             background: #cbd5e1;
@@ -238,18 +270,17 @@
             display: flex;
             align-items: center;
             gap: 8px;
-			padding:3px;
             font-size: 13px;
             font-weight: 500;
             color: #334155;
             cursor: pointer;
-			border:1px solid LightGray;
-			border-radius: 5px;
             transition: var(--transition-smooth);
+			
         }
 
         .sec-nav-link:hover {
             color: var(--accent-red);
+			
         }
 
         .sec-nav-link i {
@@ -263,18 +294,18 @@
         .hero-section-grid {
             display: grid;
             grid-template-columns: 240px 1fr 240px;
-            gap: 15px;
             padding: 15px;
             max-width: 100%;
-		
+			background:white;
+			border:1px solid #F5F5F5;
+			border-radius:10px;
         }
 
-        /* Left Category Menu */
+        /* Left Category Menu with Custom Overflown Scroll implementation */
         .category-container {
             background-color: #FFF;
             border: 1px solid var(--border-color);
             display: flex;
-			border-radius:10px;
             flex-direction: column;
             height: 440px;
         }
@@ -284,21 +315,20 @@
             font-weight: 700;
             padding: 15px;
             border-bottom: 1px solid var(--border-color);
-            color: #000;   
+            color: #000;
         }
 
         .cat-scroll-list {
             overflow-y: hidden; /* Hidden by default */
             height: 100%;
-            padding: 5px 0;	 
+            padding: 5px 0;
         }
 
-        /* Shows Scrollbar cleanly on Hover */
+        /* Shows Dynamic Scroll track on container hover elements */
         .category-container:hover .cat-scroll-list {
             overflow-y: auto;
         }
 
-        /* Professional thin scrollbar custom styling */
         .cat-scroll-list::-webkit-scrollbar {
             width: 5px;
         }
@@ -339,18 +369,16 @@
             background-color: #FFF;
             border: 1px solid var(--border-color);
             overflow: hidden;
-				border-radius:10px;
         }
 
         .carousel-container-track {
             display: flex;
-			
             width: 300%;
             height: 100%;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .main-hero-slide { 
+        .main-hero-slide {
             width: 33.3333%;
             height: 100%;
             position: relative;
@@ -358,10 +386,9 @@
             background-position: center;
             display: flex;
             align-items: center;
-			border-radius:10px;
         }
 
-        /* Split Screen Angle Gradient matching picture overlay */
+        /* Split Screen Angle Graphic Backdrop Overlay */
         .main-hero-slide::before {
             content: '';
             position: absolute;
@@ -381,6 +408,7 @@
             color: #FFF;
             padding-left: 40px;
             max-width: 380px;
+            text-align: left;
         }
 
         .slide-inner-content h1 {
@@ -415,52 +443,7 @@
             transform: translateY(-2px);
         }
 
-        /* Floating Absolute Search bar setup */
-        .search-floating-engine {
-            position: absolute;
-            top: 15%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-			height:50px;
-			opacity:80%;
-            background-color: #FFF;
-            border-radius: 30px;
-            padding: 6px 18px;
-            display: flex;
-            align-items: center;
-            z-index: 10;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            border: 1px solid #ccc;
-        }
-
-        .search-floating-engine input {
-            width: 100%;
-            border: none;
-            outline: none;
-            font-size: 13px;
-            color: #333;
-			
-        }
-
-        .search-input-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: #64748b;
-            font-size: 15px;
-        }
-
-        .search-input-actions i {
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-
-        .search-input-actions i:hover {
-            color: blue;
-        }
-
-        /* Slider Controls indicators */
+        /* Slider Controls indicator dots */
         .indicator-dots-group {
             position: absolute;
             bottom: 15px;
@@ -485,7 +468,9 @@
             border-radius: 4px;
         }
 
-        /* Right Sidebar Component layout */
+
+
+/* Right Sidebar Component layout */
         .right-search-sidebar {
       background-color: #FFF;
             border: 1px solid var(--border-color);
@@ -562,19 +547,27 @@
             background-color: var(--accent-red);
             color: #FFF;
         }
+		
+		
+		
+		
+		
+		
+		
 
         /* ==========================================================================
            5. BOTTOM RAKBANK PROMO BAR CAROUSEL
            ========================================================================== */
         .bottom-promo-wrapper {
             background-color: var(--maroon-banner);
-            margin: 0 15px 25px 15px;
+			margin: 10px 0 ;
             position: relative;
             height: 55px;
             overflow: hidden;
             display: flex;
             align-items: center;
-            border-radius: 4px;
+			border:1px solid #F5F5F5;
+			border-radius:10px;
         }
 
         .promo-slider-track {
@@ -669,7 +662,7 @@
         }
 
         /* ==========================================================================
-           RESPONSIVE RE-SCHEDULING RULES (MOBILE DEVICES)
+           RESPONSIVE RE-SCHEDULING RULES (MOBILE PHONES / VIEWPORTS)
            ========================================================================== */
         @media (max-width: 1024px) {
             .hero-section-grid {
@@ -678,9 +671,6 @@
             .category-container, .right-search-sidebar {
                 display: none; 
             }
-            .search-floating-engine {
-                width: 80%;
-            }
         }
 
         @media (max-width: 768px) {
@@ -688,16 +678,35 @@
                 display: none;
             }
 
+            .main-nav {
+                flex-wrap: wrap;
+                padding: 10px 15px;
+            }
+
             .mobile-menu-icon {
                 display: block;
+                order: 1;
+            }
+
+            .logo-wrap {
+                order: 2;
+            }
+
+            /* Search bar re-aligns gracefully underneath logo on tight viewports */
+            .nav-search-container {
+                order: 4;
+                width: 100%;
+                max-width: 100%;
+                margin-top: 8px;
             }
 
             .nav-menu-right {
+                order: 3;
                 position: fixed;
-                top: 52px;
+                top: 104px;
                 left: -100%;
                 width: 80%;
-                height: calc(100vh - 52px);
+                height: calc(100vh - 104px);
                 background-color: #FFF;
                 flex-direction: column;
                 align-items: flex-start;
@@ -734,11 +743,6 @@
                 font-size: 22px;
             }
 
-            .search-floating-engine {
-                width: 85%;
-                top: 22%;
-            }
-
             .bottom-promo-wrapper {
                 height: auto;
                 padding: 12px 0;
@@ -761,9 +765,13 @@
                 padding-left: 0;
             }
         }
+		
+		
+		
     </style>
 </head>
 <body>
+
 
 
     <nav class="main-nav">
@@ -776,25 +784,29 @@
             <div class="logo-subtext">Connecting buyers</div>
         </div>
 
+        <div class="nav-search-container">
+            <input type="text" placeholder="Search for products...">
+            <div class="nav-search-actions">
+                <i class=""></i>
+                <i class="fa-solid fa-microphone"></i>
+                <i class="fa-solid fa-magnifying-glass" style="color: #3b82f6;"></i>
+            </div>
+        </div>
+
         <div class="nav-menu-right" id="mobileDrawer">
+		 <a href="#" class="nav-link-item">All Product</a>
             <a href="#" class="nav-link-item">Supplier</a>
             <a href="#" class="nav-link-item">Buyers</a>
-			  <a href="#" class="nav-link-item">AI Agent</a>
-			    <a href="#" class="nav-link-item">About Us</a>
-				 <a href="#" class="nav-link-item">Contact</a>
-				  <a href="#" class="nav-link-item">Top Rank</a>
+			 <a href="#" class="nav-link-item">Contact</a>
             
             <div class="nav-tools-group">
                 <div class="flag-dropdown">
                     <div class="flag-icon-mock"></div>
-                    <span>AED</span>
+                    <span>EN</span>
                     <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i>
                 </div>
-                <div class="flag-dropdown">
-                    <i class="fa-solid fa-earth-americas" style="color:#333;"></i>
-                    <span>EN</span>
-                </div>
-                 <a href="#" class="btn-join-free">Sign In/Reg</a> 
+					
+                <a href="#" class="nav-link-item">Sign In/Reg</a>
                 
                 <div class="tool-icon">
                     <i class="fa-regular fa-heart"></i>
@@ -816,12 +828,7 @@
         <div class="sec-nav-link"><i class="fa-solid fa-laptop"></i> Electronics</div>
         <div class="sec-nav-link"><i class="fa-solid fa-mobile-screen-button"></i> Mobile Phones</div>
         <div class="sec-nav-link"><i class="fa-solid fa-shirt"></i> Fashion & Apparel</div>
-		        <div class="sec-nav-link"><i class="fa-solid fa-couch"></i> Household & Pets</div>
-        <div class="sec-nav-link"><i class="fa-solid fa-laptop"></i> Electronics</div>
-        <div class="sec-nav-link"><i class="fa-solid fa-mobile-screen-button"></i> Mobile Phones</div>
-        <div class="sec-nav-link"><i class="fa-solid fa-shirt"></i> Fashion & Apparel</div>
     </div>
-
 
 
 
@@ -838,49 +845,26 @@
                 <div class="cat-menu-item"><a href="#">Household & Pets <i class="fa-solid fa-chevron-right"></i></a></div>
                 <div class="cat-menu-item"><a href="#">Sports & Outdoors <i class="fa-solid fa-chevron-right"></i></a></div>
                 <div class="cat-menu-item"><a href="#">Fashion Accessories & Footwear <i class="fa-solid fa-chevron-right"></i></a></div>
-                <div class="cat-menu-item"><a href="#">Living Items <i class="fa-solid fa-chevron-right"></i></a></div>
-                <div class="cat-menu-item"><a href="#">Pet Components <i class="fa-solid fa-chevron-right"></i></a></div>
-				<div class="cat-menu-item"><a href="#">Mobile Electronics <i class="fa-solid fa-chevron-right"></i></a></div>
+                <div class="cat-menu-item"><a href="#">Mobile Electronics <i class="fa-solid fa-chevron-right"></i></a></div>
                 <div class="cat-menu-item"><a href="#">Smart Living Electronics <i class="fa-solid fa-chevron-right"></i></a></div>
                 <div class="cat-menu-item"><a href="#">Electronic Components <i class="fa-solid fa-chevron-right"></i></a></div>
                 <div class="cat-menu-item"><a href="#">Household & Pets <i class="fa-solid fa-chevron-right"></i></a></div>
                 <div class="cat-menu-item"><a href="#">Sports & Outdoors <i class="fa-solid fa-chevron-right"></i></a></div>
-                <div class="cat-menu-item"><a href="#">Fashion Accessories & Footwear <i class="fa-solid fa-chevron-right"></i></a></div>
-                <div class="cat-menu-item"><a href="#">Living Items <i class="fa-solid fa-chevron-right"></i></a></div>
-                <div class="cat-menu-item"><a href="#">Pet Components <i class="fa-solid fa-chevron-right"></i></a></div>
-				<div class="cat-menu-item"><a href="#">Fashion Accessories & Footwear <i class="fa-solid fa-chevron-right"></i></a></div>
-                <div class="cat-menu-item"><a href="#">Living Items <i class="fa-solid fa-chevron-right"></i></a></div>
-                <div class="cat-menu-item"><a href="#">Pet Components <i class="fa-solid fa-chevron-right"></i></a></div>
-				<div class="cat-menu-item"><a href="#">Mobile Electronics <i class="fa-solid fa-chevron-right"></i></a></div>
-                <div class="cat-menu-item"><a href="#">Smart Living Electronics <i class="fa-solid fa-chevron-right"></i></a></div>
-                <div class="cat-menu-item"><a href="#">Electronic Components <i class="fa-solid fa-chevron-right"></i></a></div>
-                <div class="cat-menu-item"><a href="#">Household & Pets <i class="fa-solid fa-chevron-right"></i></a></div>
-                <div class="cat-menu-item"><a href="#">Sports & Outdoors <i class="fa-solid fa-chevron-right"></i></a></div>
-                <div class="cat-menu-item"><a href="#">Fashion Accessories & Footwear <i class="fa-solid fa-chevron-right"></i></a></div>
                 <div class="cat-menu-item"><a href="#">Living Items <i class="fa-solid fa-chevron-right"></i></a></div>
                 <div class="cat-menu-item"><a href="#">Pet Components <i class="fa-solid fa-chevron-right"></i></a></div>
             </div>
         </aside>
 
         <main class="carousel-view-window">
-            <div class="search-floating-engine">
-                <input type="text" placeholder="Search Your Products...">
-                <div class="search-input-actions">
-                    <i class="fa-solid fa-camera"></i>
-                    <i class="fa-solid fa-microphone"></i>
-                    <i class="fa-solid fa-magnifying-glass" style="color: #3b82f6;"></i>
-                </div>
-            </div>
-
             <div class="carousel-container-track" id="heroTrack">
-                <div class="main-hero-slide" style="background-image: url('https://i.ibb.co/RGnzTV70/banner.png');">
+                <div class="main-hero-slide" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80');">
                     <div class="slide-inner-content">
                         <h1>FURNITURE FOR EVERY MOMENT</h1>
                         <p>UPTO 35% OFF!</p>
                         <a href="#" class="shop-btn-link">Shop Now</a>
                     </div>
                 </div>
-                <div class="main-hero-slide" style="background-image: url('https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1000&q=80');">
+                <div class="main-hero-slide" style="background-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80');">
                     <div class="slide-inner-content">
                         <h1>BULK SOURCING SIMPLIFIED</h1>
                         <p>DIRECT SUPPLIER RATES</p>
@@ -903,7 +887,9 @@
             </div>
         </main>
 
-        <aside class="right-search-sidebar">
+
+
+<aside class="right-search-sidebar">
             <div>
                 <div class="sidebar-widget-title">Popular Search</div>
                 
@@ -942,7 +928,6 @@
 
             <a href="#" class="post-action-btn">Post Your Request Now</a>
         </aside>
-
     </div>
 	
 	
@@ -980,6 +965,1587 @@
             </div>
         </div>
     </div>
+	
+	
+	
+
+<!-- Elctronics Section  -->
+	
+<!--- Electronics end -->	
+	
+	
+<!--- decoration start-->	
+<div class="b2b-elec-section-wrapper" style="box-sizing: border-box; margin:40px 0;  ">
+    <div class="b2b-elec-grid-container" style="box-sizing: border-box; display: flex; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; width: 100%; overflow: hidden; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);">
+        
+        <a href="product-details.html" class="b2b-elec-promo-banner-column" style="box-sizing: border-box; width: 220px; background-color: #0d4f9e; padding: 10px 10px; display: flex; flex-direction: column; justify-content: space-between; flex-shrink: 0; overflow: hidden; position: relative; text-decoration: none; ">
+            <div style="box-sizing: border-box;">
+                <h2 class="b2b-elec-promo-title" style="box-sizing: border-box; color: #ffffff; font-size: 26px; font-weight: 900; line-height: 1.1; margin: 0;">Electronics</h2>
+                <div class="b2b-elec-source-badge-btn" style="box-sizing: border-box; background-color: #e11d48; color: #ffffff; font-size: 11px; font-weight: bold; padding: 5px 14px; border-radius: 2px; margin-top: 10px; display: inline-block; align-self: flex-start;">Source Now</div>
+            </div>
+            <div class="b2b-elec-promo-media-holder" style="box-sizing: border-box; width: 100%; display: flex; justify-content: center; margin-top: auto; padding-top: 10px;">
+                <img src="https://i.ibb.co/xSzdhZBF/m1.jpg" alt="Electronics Showcase Core Asset" style="box-sizing: border-box; width: 100%; height: auto; max-height: full; object-fit: stretch;  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.35)); border-radius:10px;">
+            </div>
+        </a>
+
+        <div class="b2b-elec-products-scroll-row" style="box-sizing: border-box; display: flex; flex-grow: 1; overflow-x: auto; padding: 16px;  gap:10px; background-color: #ffffff; ">
+            
+            <div class="b2b-elec-product-card" style="box-sizing: border-box; width: 220px;  display: flex; flex-direction: column; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; flex-shrink: 0; ">
+                <a href="product-details.html" class="b2b-elec-card-img-anchor" style="box-sizing: border-box; position: relative; width: 100%; padding-top: 85%; background-color: #f8fafc; overflow: hidden; display: block;">
+                    <span class="b2b-elec-geo-tag" style="box-sizing: border-box; position: absolute; top: 8px; left: 8px; background-color: rgba(0, 0, 0, 0.65); color: #ffffff; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 10px; z-index: 2;">Beijing</span>
+                    <div class="b2b-elec-video-play-icon-overlay" style="box-sizing: border-box; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; background-color: rgba(0, 0, 0, 0.75); color: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">
+                        <div style="box-sizing: border-box; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #ffffff; margin-left: 2px;"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=400&q=80" alt="Product Asset Material" style="box-sizing: border-box; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                </a>
+                <div class="b2b-elec-card-details-box" style="box-sizing: border-box; padding: 12px 10px;  display: flex; flex-direction: column; flex-grow: 1;">
+                    <a href="product-details.html" class="b2b-elec-details-link-mask" style="box-sizing: border-box; text-decoration: none; color: inherit; display: block;">
+                        <h4 class="b2b-elec-product-title" style="box-sizing: border-box; font-size: 12.5px; font-weight: bold; color: #0f172a; line-height: 1.4; margin: 0 0 6px 0;">Custom Staircase Chandelier <span style="box-sizing: border-box; color: #64748b; font-weight: normal;">.......View More</span></h4>
+                        <div class="b2b-elec-price-metrics-line" style="box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <span class="b2b-elec-price-value" style="box-sizing: border-box; font-size: 15px; font-weight: bold; color: #dc2626;">AED 33</span>
+                            <span class="b2b-elec-verified-badge" style="box-sizing: border-box; font-size: 10.5px; font-weight: bold; color: #0284c7;">Verified</span>
+                        </div>
+                        <div class="b2b-elec-moq-text" style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 8px;">Min. 1 piece</div>
+                    </a>
+                    <div class="b2b-elec-supplier-origin-row" style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: #2563eb; font-weight: bold; margin-top: auto;">
+                        <div class="b2b-elec-css-flag-box" style="box-sizing: border-box; width: 15px; height: 10px; background: linear-gradient(to bottom, #de2910 50%, #ffde00 50%); flex-shrink: 0;"></div>
+                        <span class="b2b-elec-supplier-name-truncate" style="box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">6yrs CN Polarux Lighting</span>
+                    </div>
+                </div>
+                <div class="b2b-elec-card-action-footer" style="box-sizing: border-box; padding: 0 10px 12px 10px; margin-top: 10px;">
+                    <a href="contact-supplier.html" class="b2b-elec-contact-supplier-btn" style="box-sizing: border-box; display: block; text-align: center; text-decoration: none; border: 1px solid #cbd5e1; padding: 7px 0; font-size: 11.5px; font-weight: bold; color: #334155; border-radius: 20px; background-color: #ffffff;">Contact Supplier</a>
+                </div>
+            </div>
+
+            <div class="b2b-elec-product-card" style="box-sizing: border-box; width: 220px;; display: flex; flex-direction: column; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
+                <a href="product-details.html" class="b2b-elec-card-img-anchor" style="box-sizing: border-box; position: relative; width: 100%; padding-top: 85%; background-color: #f8fafc; overflow: hidden; display: block;">
+                    <span class="b2b-elec-geo-tag" style="box-sizing: border-box; position: absolute; top: 8px; left: 8px; background-color: rgba(0, 0, 0, 0.65); color: #ffffff; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 10px; z-index: 2;">Shenzhen</span>
+                    <div class="b2b-elec-video-play-icon-overlay" style="box-sizing: border-box; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; background-color: rgba(0, 0, 0, 0.75); color: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">
+                        <div style="box-sizing: border-box; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #ffffff; margin-left: 2px;"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80" alt="Product Asset Material" style="box-sizing: border-box; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                </a>
+                <div class="b2b-elec-card-details-box" style="box-sizing: border-box; padding: 12px 10px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <a href="product-details.html" class="b2b-elec-details-link-mask" style="box-sizing: border-box; text-decoration: none; color: inherit; display: block;">
+                        <h4 class="b2b-elec-product-title" style="box-sizing: border-box; font-size: 12.5px; font-weight: bold; color: #0f172a; line-height: 1.4; margin: 0 0 6px 0;">Smart Fitness Watch v4 <span style="box-sizing: border-box; color: #64748b; font-weight: normal;">.......View More</span></h4>
+                        <div class="b2b-elec-price-metrics-line" style="box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <span class="b2b-elec-price-value" style="box-sizing: border-box; font-size: 15px; font-weight: bold; color: #dc2626;">AED 45</span>
+                            <span class="b2b-elec-verified-badge" style="box-sizing: border-box; font-size: 10.5px; font-weight: bold; color: #0284c7;">Verified</span>
+                        </div>
+                        <div class="b2b-elec-moq-text" style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 8px;">Min. 10 pieces</div>
+                    </a>
+                    <div class="b2b-elec-supplier-origin-row" style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: #2563eb; font-weight: bold; margin-top: auto;">
+                        <div class="b2b-elec-css-flag-box" style="box-sizing: border-box; width: 15px; height: 10px; background: linear-gradient(to bottom, #de2910 50%, #ffde00 50%); flex-shrink: 0;"></div>
+                        <span class="b2b-elec-supplier-name-truncate" style="box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">3yrs CN Apex Tech</span>
+                    </div>
+                </div>
+                <div class="b2b-elec-card-action-footer" style="box-sizing: border-box; padding: 0 10px 12px 10px; margin-top: 10px;">
+                    <a href="contact-supplier.html" class="b2b-elec-contact-supplier-btn" style="box-sizing: border-box; display: block; text-align: center; text-decoration: none; border: 1px solid #cbd5e1; padding: 7px 0; font-size: 11.5px; font-weight: bold; color: #334155; border-radius: 20px; background-color: #ffffff;">Contact Supplier</a>
+                </div>
+            </div>
+
+            <div class="b2b-elec-product-card" style="box-sizing: border-box; width: 220px; display: flex; flex-direction: column; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
+                <a href="product-details.html" class="b2b-elec-card-img-anchor" style="box-sizing: border-box; position: relative; width: 100%; padding-top: 85%; background-color: #f8fafc; overflow: hidden; display: block;">
+                    <span class="b2b-elec-geo-tag" style="box-sizing: border-box; position: absolute; top: 8px; left: 8px; background-color: rgba(0, 0, 0, 0.65); color: #ffffff; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 10px; z-index: 2;">Guangzhou</span>
+                    <div class="b2b-elec-video-play-icon-overlay" style="box-sizing: border-box; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; background-color: rgba(0, 0, 0, 0.75); color: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">
+                        <div style="box-sizing: border-box; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #ffffff; margin-left: 2px;"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80" alt="Product Asset Material" style="box-sizing: border-box; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                </a>
+                <div class="b2b-elec-card-details-box" style="box-sizing: border-box; padding: 12px 10px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <a href="product-details.html" class="b2b-elec-details-link-mask" style="box-sizing: border-box; text-decoration: none; color: inherit; display: block;">
+                        <h4 class="b2b-elec-product-title" style="box-sizing: border-box; font-size: 12.5px; font-weight: bold; color: #0f172a; line-height: 1.4; margin: 0 0 6px 0;">Wireless ANC Headphones <span style="box-sizing: border-box; color: #64748b; font-weight: normal;">.......View More</span></h4>
+                        <div class="b2b-elec-price-metrics-line" style="box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <span class="b2b-elec-price-value" style="box-sizing: border-box; font-size: 15px; font-weight: bold; color: #dc2626;">AED 89</span>
+                            <span class="b2b-elec-verified-badge" style="box-sizing: border-box; font-size: 10.5px; font-weight: bold; color: #0284c7;">Verified</span>
+                        </div>
+                        <div class="b2b-elec-moq-text" style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 8px;">Min. 5 pieces</div>
+                    </a>
+                    <div class="b2b-elec-supplier-origin-row" style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: #2563eb; font-weight: bold; margin-top: auto;">
+                        <div class="b2b-elec-css-flag-box" style="box-sizing: border-box; width: 15px; height: 10px; background: linear-gradient(to bottom, #de2910 50%, #ffde00 50%); flex-shrink: 0;"></div>
+                        <span class="b2b-elec-supplier-name-truncate" style="box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">5yrs CN SoundWave Ltd</span>
+                    </div>
+                </div>
+                <div class="b2b-elec-card-action-footer" style="box-sizing: border-box; padding: 0 10px 12px 10px; margin-top: 10px;">
+                    <a href="contact-supplier.html" class="b2b-elec-contact-supplier-btn" style="box-sizing: border-box; display: block; text-align: center; text-decoration: none; border: 1px solid #cbd5e1; padding: 7px 0; font-size: 11.5px; font-weight: bold; color: #334155; border-radius: 20px; background-color: #ffffff;">Contact Supplier</a>
+                </div>
+            </div>
+
+            <div class="b2b-elec-product-card" style="box-sizing: border-box; width: 220px; display: flex; flex-direction: column; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
+                <a href="product-details.html" class="b2b-elec-card-img-anchor" style="box-sizing: border-box; position: relative; width: 100%; padding-top: 85%; background-color: #f8fafc; overflow: hidden; display: block;">
+                    <span class="b2b-elec-geo-tag" style="box-sizing: border-box; position: absolute; top: 8px; left: 8px; background-color: rgba(0, 0, 0, 0.65); color: #ffffff; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 10px; z-index: 2;">Ningbo</span>
+                    <div class="b2b-elec-video-play-icon-overlay" style="box-sizing: border-box; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; background-color: rgba(0, 0, 0, 0.75); color: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">
+                        <div style="box-sizing: border-box; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #ffffff; margin-left: 2px;"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80" alt="Product Asset Material" style="box-sizing: border-box; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                </a>
+                <div class="b2b-elec-card-details-box" style="box-sizing: border-box; padding: 12px 10px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <a href="product-details.html" class="b2b-elec-details-link-mask" style="box-sizing: border-box; text-decoration: none; color: inherit; display: block;">
+                        <h4 class="b2b-elec-product-title" style="box-sizing: border-box; font-size: 12.5px; font-weight: bold; color: #0f172a; line-height: 1.4; margin: 0 0 6px 0;">Ultra HD IPS Monitor 27" <span style="box-sizing: border-box; color: #64748b; font-weight: normal;">.......View More</span></h4>
+                        <div class="b2b-elec-price-metrics-line" style="box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <span class="b2b-elec-price-value" style="box-sizing: border-box; font-size: 15px; font-weight: bold; color: #dc2626;">AED 310</span>
+                            <span class="b2b-elec-verified-badge" style="box-sizing: border-box; font-size: 10.5px; font-weight: bold; color: #0284c7;">Verified</span>
+                        </div>
+                        <div class="b2b-elec-moq-text" style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 8px;">Min. 2 pieces</div>
+                    </a>
+                    <div class="b2b-elec-supplier-origin-row" style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: #2563eb; font-weight: bold; margin-top: auto;">
+                        <div class="b2b-elec-css-flag-box" style="box-sizing: border-box; width: 15px; height: 10px; background: linear-gradient(to bottom, #de2910 50%, #ffde00 50%); flex-shrink: 0;"></div>
+                        <span class="b2b-elec-supplier-name-truncate" style="box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">8yrs CN VisionDisplay</span>
+                    </div>
+                </div>
+                <div class="b2b-elec-card-action-footer" style="box-sizing: border-box; padding: 0 10px 12px 10px; margin-top: 10px;">
+                    <a href="contact-supplier.html" class="b2b-elec-contact-supplier-btn" style="box-sizing: border-box; display: block; text-align: center; text-decoration: none; border: 1px solid #cbd5e1; padding: 7px 0; font-size: 11.5px; font-weight: bold; color: #334155; border-radius: 20px; background-color: #ffffff;">Contact Supplier</a>
+                </div>
+            </div>
+
+            <div class="b2b-elec-product-card" style="box-sizing: border-box; width: 220px; display: flex; flex-direction: column; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
+                <a href="product-details.html" class="b2b-elec-card-img-anchor" style="box-sizing: border-box; position: relative; width: 100%; padding-top: 85%; background-color: #f8fafc; overflow: hidden; display: block;">
+                    <span class="b2b-elec-geo-tag" style="box-sizing: border-box; position: absolute; top: 8px; left: 8px; background-color: rgba(0, 0, 0, 0.65); color: #ffffff; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 10px; z-index: 2;">Shanghai</span>
+                    <div class="b2b-elec-video-play-icon-overlay" style="box-sizing: border-box; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; background-color: rgba(0, 0, 0, 0.75); color: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">
+                        <div style="box-sizing: border-box; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #ffffff; margin-left: 2px;"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80" alt="Product Asset Material" style="box-sizing: border-box; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                </a>
+                <div class="b2b-elec-card-details-box" style="box-sizing: border-box; padding: 12px 10px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <a href="product-details.html" class="b2b-elec-details-link-mask" style="box-sizing: border-box; text-decoration: none; color: inherit; display: block;">
+                        <h4 class="b2b-elec-product-title" style="box-sizing: border-box; font-size: 12.5px; font-weight: bold; color: #0f172a; line-height: 1.4; margin: 0 0 6px 0;">Ergonomic Sports Sneakers <span style="box-sizing: border-box; color: #64748b; font-weight: normal;">.......View More</span></h4>
+                        <div class="b2b-elec-price-metrics-line" style="box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <span class="b2b-elec-price-value" style="box-sizing: border-box; font-size: 15px; font-weight: bold; color: #dc2626;">AED 55</span>
+                            <span class="b2b-elec-verified-badge" style="box-sizing: border-box; font-size: 10.5px; font-weight: bold; color: #0284c7;">Verified</span>
+                        </div>
+                        <div class="b2b-elec-moq-text" style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 8px;">Min. 20 pieces</div>
+                    </a>
+                    <div class="b2b-elec-supplier-origin-row" style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: #2563eb; font-weight: bold; margin-top: auto;">
+                        <div class="b2b-elec-css-flag-box" style="box-sizing: border-box; width: 15px; height: 10px; background: linear-gradient(to bottom, #de2910 50%, #ffde00 50%); flex-shrink: 0;"></div>
+                        <span class="b2b-elec-supplier-name-truncate" style="box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">2yrs CN PrimeFootwear</span>
+                    </div>
+                </div>
+                <div class="b2b-elec-card-action-footer" style="box-sizing: border-box; padding: 0 10px 12px 10px; margin-top: 10px;">
+                    <a href="contact-supplier.html" class="b2b-elec-contact-supplier-btn" style="box-sizing: border-box; display: block; text-align: center; text-decoration: none; border: 1px solid #cbd5e1; padding: 7px 0; font-size: 11.5px; font-weight: bold; color: #334155; border-radius: 20px; background-color: #ffffff;">Contact Supplier</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<style>
+        /* Main Container Grid */
+        .storefront-container {
+            display: grid;
+            grid-template-columns: 1.2fr repeat(5, 1fr);
+            gap: 10px;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+			box-sizing: border-box; 
+        }
+
+        /* --- LEFT BANNER (Heading + Full Image) --- */
+        .banner-card { background:#00008B;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            overflow: hidden; 
+			place-items: center;			
+        }
+
+        .banner-header {
+            padding: 6px 10px;
+         box-sizing: border-box; color: #ffffff; 
+		 font-size: 20px; font-weight: 900; line-height: 1.1; margin: 0;
+            
+           
+            width: fit-content;
+            margin-bottom: 12px;
+            border-radius: 5px;
+			position:center;
+        }
+
+        .banner-image-wrapper {
+            flex-grow: 1;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .banner-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- PRODUCT CARDS (5 Exact Designs) --- */
+        .product-card {
+            border: 1px solid #eef2f5;
+            border-radius: 8px;
+        
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* Image Link styling */
+        .product-image-link {
+            display: block;
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            margin-bottom: 12px;
+            text-decoration: none;
+            overflow: hidden; 
+            border-radius: 6px;
+            background-color: #f9f9f9;
+			
+        }
+
+        .product-image-link img {
+            width: 100%; 
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .origin-badge {
+            position: absolute;
+            padding: 2px 8px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 12px;
+			box-sizing: border-box;  top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+			
+        }
+
+        /* Product Details */
+        .product-title {
+            font-size: 13px;
+            line-height: 1.4;
+            color: #222;
+			padding: 0 8px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-decoration: none;
+			
+        }
+
+        .product-title:hover {
+            color: #0056b3;
+        }
+
+        .price-row {
+            display: flex;
+		   padding: 2px 8px;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .price {
+            font-size: 15px;
+            font-weight: bold;
+            color: #d91b1b;
+        }
+
+        .verified-badge {
+            font-size: 11px;
+            font-weight: bold;
+            color: #0056b3;
+            font-style: italic;
+        }
+
+        .moq {
+            font-size: 12px;
+            color: #666; 
+            margin-bottom: 6px; padding: 2px 8px;
+        }
+
+        .supplier-info {
+            display: flex;
+            align-items: center;
+            gap: 4px; padding: 2px 8px;
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        .flag-icon {
+            width: 16px;
+            height: 11px;
+            object-fit: cover;
+        }
+
+        /* Action Button */
+        .contact-btn {
+            display: block;
+            text-align: center;
+            background-color: green;
+            color: white;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 20px;
+            text-decoration: none;
+            margin-top: auto; /* Pushes button to the bottom consistently */
+            transition: background-color 0.2s;
+        }
+
+        .contact-btn:hover {
+            background-color: #0f4cb8;
+        }
+
+        /* Responsive breakdown for smaller screens */
+        @media (max-width: 1100px) {
+            .storefront-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .storefront-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .storefront-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <div class="storefront-container">
+        <div class="banner-card">
+            <div class="banner-header">Decoration & Lighting</div>
+            <div class="banner-image-wrapper">
+                <img src="https://i.ibb.co/gMKrFGZ4/61-Xudjc-LXu-L-AC-UF350-350-QL80.jpg" alt="Decoration and Lighting Banner">
+            </div>
+        </div>
+
+        <div class="product-card">
+            <a href="product-details-1.html" class="product-image-link" title="View Details">
+                <span class="origin-badge">France</span>
+                <img src="https://i.ibb.co/gMKrFGZ4/61-Xudjc-LXu-L-AC-UF350-350-QL80.jpg" alt="Smart Perfume Deep Scent">
+            </a>
+            <a href="product-details-1.html" class="product-title">Smart Perfume Deep scent for men 50 ml.........View More</a>
+            <div class="price-row">
+                <span class="price">AED 136</span>
+                <span class="verified-badge">✓ Verified</span>
+            </div>
+            <div class="moq">Min. order: 100 piece</div>
+            <div class="supplier-info">
+                <img class="flag-icon" src="https://i.ibb.co/k6DGsWcx/1.jpg" alt="Flag">
+                <span>6yrs Rasasi Perfume Co</span>
+            </div>
+            <a href="supplier-profile-1.html" class="contact-btn">Contact Supplier</a>
+        </div>
+
+        <div class="product-card">
+            <a href="product-details-2.html" class="product-image-link" title="View Details">
+                <span class="origin-badge">France</span>
+                <img src="https://i.ibb.co/k6DGsWcx/1.jpg" alt="Smart Perfume Deep Scent">
+            </a>
+            <a href="product-details-2.html" class="product-title">Smart Perfume Deep scent for men 50 ml.........View More</a>
+            <div class="price-row">
+                <span class="price">AED 136</span>
+                <span class="verified-badge">✓ Verified</span>
+            </div>
+            <div class="moq">Min. order: 100 piece</div>
+            <div class="supplier-info">
+                <img class="flag-icon" src="https://i.ibb.co/gMKrFGZ4/61-Xudjc-LXu-L-AC-UF350-350-QL80.jpg" alt="Flag">
+                <span>6yrs Rasasi Perfume Co</span>
+            </div>
+            <a href="supplier-profile-2.html" class="contact-btn">Contact Supplier</a>
+        </div>
+
+        <div class="product-card">
+            <a href="product-details-3.html" class="product-image-link" title="View Details">
+                <span class="origin-badge">France</span>
+                <img src="https://i.ibb.co/gMKrFGZ4/61-Xudjc-LXu-L-AC-UF350-350-QL80.jpg" alt="Smart Perfume Deep Scent">
+            </a>
+            <a href="product-details-3.html" class="product-title">Smart Perfume Deep scent for men 50 ml.........View More</a>
+            <div class="price-row">
+                <span class="price">AED 136</span>
+                <span class="verified-badge">✓ Verified</span>
+            </div>
+            <div class="moq">Min. order: 100 piece</div>
+            <div class="supplier-info">
+                <img class="flag-icon" src="https://i.ibb.co/gMKrFGZ4/61-Xudjc-LXu-L-AC-UF350-350-QL80.jpg" alt="Flag">
+                <span>6yrs Rasasi Perfume Co</span>
+            </div>
+            <a href="supplier-profile-3.html" class="contact-btn">Contact Supplier</a>
+        </div>
+
+        <div class="product-card">
+            <a href="product-details-4.html" class="product-image-link" title="View Details">
+                <span class="origin-badge">France</span>
+                <img src="https://i.ibb.co/gMKrFGZ4/61-Xudjc-LXu-L-AC-UF350-350-QL80.jpg" alt="Smart Perfume Deep Scent">
+            </a>
+            <a href="product-details-4.html" class="product-title">Smart Perfume Deep scent for men 50 ml.........View More</a>
+            <div class="price-row">
+                <span class="price">AED 136</span>
+                <span class="verified-badge">✓ Verified</span>
+            </div>
+            <div class="moq">Min. order: 100 piece</div>
+            <div class="supplier-info">
+                <img class="flag-icon" src="https://i.ibb.co/gMKrFGZ4/61-Xudjc-LXu-L-AC-UF350-350-QL80.jpg" alt="Flag">
+                <span>6yrs Rasasi Perfume Co</span>
+            </div>
+            <a href="supplier-profile-4.html" class="contact-btn">Contact Supplier</a>
+        </div>
+
+        <div class="product-card">
+            <a href="product-details-5.html" class="product-image-link" title="View Details">
+                <span class="origin-badge">France</span>
+                <img src="https://i.ibb.co/gMKrFGZ4/61-Xudjc-LXu-L-AC-UF350-350-QL80.jpg" alt="Smart Perfume Deep Scent">
+            </a>
+            <a href="product-details-5.html" class="product-title">Smart Perfume Deep scent for men 50 ml.........View More</a>
+            <div class="price-row">
+                <span class="price">AED 136</span>
+                <span class="verified-badge">✓ Verified</span>
+            </div>
+            <div class="moq">Min. order: 100 piece</div>
+            <div class="supplier-info">
+                <img class="flag-icon" src="https://i.ibb.co/gMKrFGZ4/61-Xudjc-LXu-L-AC-UF350-350-QL80.jpg" alt="Flag">
+                <span>6yrs Rasasi Perfume Co</span>
+            </div>
+            <a href="supplier-profile-5.html" class="contact-btn">Contact Supplier</a>
+        </div>
+    </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="b2b-elec-section-wrapper" style="box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; margin: 20px auto; padding: 0 15px; width: 100%; ">
+    <div class="b2b-elec-grid-container" style="box-sizing: border-box; display: flex; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; width: 100%; overflow: hidden; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);">
+        
+        <a href="product-details.html" class="b2b-elec-promo-banner-column" style="box-sizing: border-box; width: 220px; background-color: #0d4f9e; padding: 24px 16px; display: flex; flex-direction: column; justify-content: space-between; flex-shrink: 0; overflow: hidden; position: relative; text-decoration: none;">
+            <div style="box-sizing: border-box;">
+                <h2 class="b2b-elec-promo-title" style="box-sizing: border-box; color: #ffffff; font-size: 20px; font-weight: 900; line-height: 1.1; margin: 0;">Colthes & Fashion </h2>
+                <div class="b2b-elec-source-badge-btn" style="box-sizing: border-box; background-color: #e11d48; color: #ffffff; font-size: 11px; font-weight: bold; padding: 5px 14px; border-radius: 2px; margin-top: 10px; display: inline-block; align-self: flex-start;">Source Now</div>
+            </div>
+            <div class="b2b-elec-promo-media-holder" style="box-sizing: border-box; width: 100%; display: flex; justify-content: center; margin-top: auto; padding-top: 20px;">
+                <img src="https://i.ibb.co/DfV0j8T6/s2.jpg" alt="Electronics Showcase Core Asset" style="box-sizing: border-box; width: 100%; height: auto;  object-fit: contain; filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.35)); border-radius:10px;">
+            </div>
+        </a>
+
+        <div class="b2b-elec-products-scroll-row" style="box-sizing: border-box; display: flex; flex-grow: 1; overflow-x: auto; padding: 16px; gap: 14px; background-color: #ffffff;">
+            
+            <div class="b2b-elec-product-card" style="box-sizing: border-box; width: 195px; display: flex; flex-direction: column; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
+                <a href="product-details.html" class="b2b-elec-card-img-anchor" style="box-sizing: border-box; position: relative; width: 100%; padding-top: 85%; background-color: #f8fafc; overflow: hidden; display: block;">
+                    <span class="b2b-elec-geo-tag" style="box-sizing: border-box; position: absolute; top: 8px; left: 8px; background-color: rgba(0, 0, 0, 0.65); color: #ffffff; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 10px; z-index: 2;">Beijing</span>
+                    <div class="b2b-elec-video-play-icon-overlay" style="box-sizing: border-box; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; background-color: rgba(0, 0, 0, 0.75); color: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">
+                        <div style="box-sizing: border-box; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #ffffff; margin-left: 2px;"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=400&q=80" alt="Product Asset Material" style="box-sizing: border-box; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                </a>
+                <div class="b2b-elec-card-details-box" style="box-sizing: border-box; padding: 12px 10px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <a href="product-details.html" class="b2b-elec-details-link-mask" style="box-sizing: border-box; text-decoration: none; color: inherit; display: block;">
+                        <h4 class="b2b-elec-product-title" style="box-sizing: border-box; font-size: 12.5px; font-weight: bold; color: #0f172a; line-height: 1.4; margin: 0 0 6px 0;">Custom Staircase Chandelier <span style="box-sizing: border-box; color: #64748b; font-weight: normal;">.......View More</span></h4>
+                        <div class="b2b-elec-price-metrics-line" style="box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <span class="b2b-elec-price-value" style="box-sizing: border-box; font-size: 15px; font-weight: bold; color: #dc2626;">AED 33</span>
+                            <span class="b2b-elec-verified-badge" style="box-sizing: border-box; font-size: 10.5px; font-weight: bold; color: #0284c7;">Verified</span>
+                        </div>
+                        <div class="b2b-elec-moq-text" style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 8px;">Min. 1 piece</div>
+                    </a>
+                    <div class="b2b-elec-supplier-origin-row" style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: #2563eb; font-weight: bold; margin-top: auto;">
+                        <div class="b2b-elec-css-flag-box" style="box-sizing: border-box; width: 15px; height: 10px; background: linear-gradient(to bottom, #de2910 50%, #ffde00 50%); flex-shrink: 0;"></div>
+                        <span class="b2b-elec-supplier-name-truncate" style="box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">6yrs CN Polarux Lighting</span>
+                    </div>
+                </div>
+                <div class="b2b-elec-card-action-footer" style="box-sizing: border-box; padding: 0 10px 12px 10px; margin-top: 10px;">
+                    <a href="contact-supplier.html" class="b2b-elec-contact-supplier-btn" style="box-sizing: border-box; display: block; text-align: center; text-decoration: none; border: 1px solid #cbd5e1; padding: 7px 0; font-size: 11.5px; font-weight: bold; color: white; border-radius: 20px; background-color: green;">Contact Supplier</a>
+                </div>
+            </div>
+
+            <div class="b2b-elec-product-card" style="box-sizing: border-box; width: 195px; display: flex; flex-direction: column; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
+                <a href="product-details.html" class="b2b-elec-card-img-anchor" style="box-sizing: border-box; position: relative; width: 100%; padding-top: 85%; background-color: #f8fafc; overflow: hidden; display: block;">
+                    <span class="b2b-elec-geo-tag" style="box-sizing: border-box; position: absolute; top: 8px; left: 8px; background-color: rgba(0, 0, 0, 0.65); color: #ffffff; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 10px; z-index: 2;">Shenzhen</span>
+                    <div class="b2b-elec-video-play-icon-overlay" style="box-sizing: border-box; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; background-color: rgba(0, 0, 0, 0.75); color: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">
+                        <div style="box-sizing: border-box; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #ffffff; margin-left: 2px;"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80" alt="Product Asset Material" style="box-sizing: border-box; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                </a>
+                <div class="b2b-elec-card-details-box" style="box-sizing: border-box; padding: 12px 10px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <a href="product-details.html" class="b2b-elec-details-link-mask" style="box-sizing: border-box; text-decoration: none; color: inherit; display: block;">
+                        <h4 class="b2b-elec-product-title" style="box-sizing: border-box; font-size: 12.5px; font-weight: bold; color: #0f172a; line-height: 1.4; margin: 0 0 6px 0;">Smart Fitness Watch v4 <span style="box-sizing: border-box; color: #64748b; font-weight: normal;">.......View More</span></h4>
+                        <div class="b2b-elec-price-metrics-line" style="box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <span class="b2b-elec-price-value" style="box-sizing: border-box; font-size: 15px; font-weight: bold; color: #dc2626;">AED 45</span>
+                            <span class="b2b-elec-verified-badge" style="box-sizing: border-box; font-size: 10.5px; font-weight: bold; color: #0284c7;">Verified</span>
+                        </div>
+                        <div class="b2b-elec-moq-text" style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 8px;">Min. 10 pieces</div>
+                    </a>
+                    <div class="b2b-elec-supplier-origin-row" style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: #2563eb; font-weight: bold; margin-top: auto;">
+                        <div class="b2b-elec-css-flag-box" style="box-sizing: border-box; width: 15px; height: 10px; background: linear-gradient(to bottom, #de2910 50%, #ffde00 50%); flex-shrink: 0;"></div>
+                        <span class="b2b-elec-supplier-name-truncate" style="box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">3yrs CN Apex Tech</span>
+                    </div>
+                </div>
+                <div class="b2b-elec-card-action-footer" style="box-sizing: border-box; padding: 0 10px 12px 10px; margin-top: 10px;">
+                    <a href="contact-supplier.html" class="b2b-elec-contact-supplier-btn" style="box-sizing: border-box; display: block; text-align: center; text-decoration: none; border: 1px solid #cbd5e1; padding: 7px 0; font-size: 11.5px; font-weight: bold; color: #334155; border-radius: 20px; background-color: #ffffff;">Contact Supplier</a>
+                </div>
+            </div>
+
+            <div class="b2b-elec-product-card" style="box-sizing: border-box; width: 195px; display: flex; flex-direction: column; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
+                <a href="product-details.html" class="b2b-elec-card-img-anchor" style="box-sizing: border-box; position: relative; width: 100%; padding-top: 85%; background-color: #f8fafc; overflow: hidden; display: block;">
+                    <span class="b2b-elec-geo-tag" style="box-sizing: border-box; position: absolute; top: 8px; left: 8px; background-color: rgba(0, 0, 0, 0.65); color: #ffffff; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 10px; z-index: 2;">Guangzhou</span>
+                    <div class="b2b-elec-video-play-icon-overlay" style="box-sizing: border-box; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; background-color: rgba(0, 0, 0, 0.75); color: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">
+                        <div style="box-sizing: border-box; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #ffffff; margin-left: 2px;"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80" alt="Product Asset Material" style="box-sizing: border-box; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                </a>
+                <div class="b2b-elec-card-details-box" style="box-sizing: border-box; padding: 12px 10px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <a href="product-details.html" class="b2b-elec-details-link-mask" style="box-sizing: border-box; text-decoration: none; color: inherit; display: block;">
+                        <h4 class="b2b-elec-product-title" style="box-sizing: border-box; font-size: 12.5px; font-weight: bold; color: #0f172a; line-height: 1.4; margin: 0 0 6px 0;">Wireless ANC Headphones <span style="box-sizing: border-box; color: #64748b; font-weight: normal;">.......View More</span></h4>
+                        <div class="b2b-elec-price-metrics-line" style="box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <span class="b2b-elec-price-value" style="box-sizing: border-box; font-size: 15px; font-weight: bold; color: #dc2626;">AED 89</span>
+                            <span class="b2b-elec-verified-badge" style="box-sizing: border-box; font-size: 10.5px; font-weight: bold; color: #0284c7;">Verified</span>
+                        </div>
+                        <div class="b2b-elec-moq-text" style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 8px;">Min. 5 pieces</div>
+                    </a>
+                    <div class="b2b-elec-supplier-origin-row" style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: #2563eb; font-weight: bold; margin-top: auto;">
+                        <div class="b2b-elec-css-flag-box" style="box-sizing: border-box; width: 15px; height: 10px; background: linear-gradient(to bottom, #de2910 50%, #ffde00 50%); flex-shrink: 0;"></div>
+                        <span class="b2b-elec-supplier-name-truncate" style="box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">5yrs CN SoundWave Ltd</span>
+                    </div>
+                </div>
+                <div class="b2b-elec-card-action-footer" style="box-sizing: border-box; padding: 0 10px 12px 10px; margin-top: 10px;">
+                    <a href="contact-supplier.html" class="b2b-elec-contact-supplier-btn" style="box-sizing: border-box; display: block; text-align: center; text-decoration: none; border: 1px solid #cbd5e1; padding: 7px 0; font-size: 11.5px; font-weight: bold; color: #334155; border-radius: 20px; background-color: #ffffff;">Contact Supplier</a>
+                </div>
+            </div>
+
+            <div class="b2b-elec-product-card" style="box-sizing: border-box; width: 195px; display: flex; flex-direction: column; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
+                <a href="product-details.html" class="b2b-elec-card-img-anchor" style="box-sizing: border-box; position: relative; width: 100%; padding-top: 85%; background-color: #f8fafc; overflow: hidden; display: block;">
+                    <span class="b2b-elec-geo-tag" style="box-sizing: border-box; position: absolute; top: 8px; left: 8px; background-color: rgba(0, 0, 0, 0.65); color: #ffffff; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 10px; z-index: 2;">Ningbo</span>
+                    <div class="b2b-elec-video-play-icon-overlay" style="box-sizing: border-box; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; background-color: rgba(0, 0, 0, 0.75); color: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">
+                        <div style="box-sizing: border-box; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #ffffff; margin-left: 2px;"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80" alt="Product Asset Material" style="box-sizing: border-box; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                </a>
+                <div class="b2b-elec-card-details-box" style="box-sizing: border-box; padding: 12px 10px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <a href="product-details.html" class="b2b-elec-details-link-mask" style="box-sizing: border-box; text-decoration: none; color: inherit; display: block;">
+                        <h4 class="b2b-elec-product-title" style="box-sizing: border-box; font-size: 12.5px; font-weight: bold; color: #0f172a; line-height: 1.4; margin: 0 0 6px 0;">Ultra HD IPS Monitor 27" <span style="box-sizing: border-box; color: #64748b; font-weight: normal;">.......View More</span></h4>
+                        <div class="b2b-elec-price-metrics-line" style="box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <span class="b2b-elec-price-value" style="box-sizing: border-box; font-size: 15px; font-weight: bold; color: #dc2626;">AED 310</span>
+                            <span class="b2b-elec-verified-badge" style="box-sizing: border-box; font-size: 10.5px; font-weight: bold; color: #0284c7;">Verified</span>
+                        </div>
+                        <div class="b2b-elec-moq-text" style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 8px;">Min. 2 pieces</div>
+                    </a>
+                    <div class="b2b-elec-supplier-origin-row" style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: #2563eb; font-weight: bold; margin-top: auto;">
+                        <div class="b2b-elec-css-flag-box" style="box-sizing: border-box; width: 15px; height: 10px; background: linear-gradient(to bottom, #de2910 50%, #ffde00 50%); flex-shrink: 0;"></div>
+                        <span class="b2b-elec-supplier-name-truncate" style="box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">8yrs CN VisionDisplay</span>
+                    </div>
+                </div>
+                <div class="b2b-elec-card-action-footer" style="box-sizing: border-box; padding: 0 10px 12px 10px; margin-top: 10px;">
+                    <a href="contact-supplier.html" class="b2b-elec-contact-supplier-btn" style="box-sizing: border-box; display: block; text-align: center; text-decoration: none; border: 1px solid #cbd5e1; padding: 7px 0; font-size: 11.5px; font-weight: bold; color: #334155; border-radius: 20px; background-color: #ffffff;">Contact Supplier</a>
+                </div>
+            </div>
+
+            <div class="b2b-elec-product-card" style="box-sizing: border-box; width: 195px; display: flex; flex-direction: column; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
+                <a href="product-details.html" class="b2b-elec-card-img-anchor" style="box-sizing: border-box; position: relative; width: 100%; padding-top: 85%; background-color: #f8fafc; overflow: hidden; display: block;">
+                    <span class="b2b-elec-geo-tag" style="box-sizing: border-box; position: absolute; top: 8px; left: 8px; background-color: rgba(0, 0, 0, 0.65); color: #ffffff; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 10px; z-index: 2;">Shanghai</span>
+                    <div class="b2b-elec-video-play-icon-overlay" style="box-sizing: border-box; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; background-color: rgba(0, 0, 0, 0.75); color: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">
+                        <div style="box-sizing: border-box; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #ffffff; margin-left: 2px;"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80" alt="Product Asset Material" style="box-sizing: border-box; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                </a>
+                <div class="b2b-elec-card-details-box" style="box-sizing: border-box; padding: 12px 10px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <a href="product-details.html" class="b2b-elec-details-link-mask" style="box-sizing: border-box; text-decoration: none; color: inherit; display: block;">
+                        <h4 class="b2b-elec-product-title" style="box-sizing: border-box; font-size: 12.5px; font-weight: bold; color: #0f172a; line-height: 1.4; margin: 0 0 6px 0;">Ergonomic Sports Sneakers <span style="box-sizing: border-box; color: #64748b; font-weight: normal;">.......View More</span></h4>
+                        <div class="b2b-elec-price-metrics-line" style="box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <span class="b2b-elec-price-value" style="box-sizing: border-box; font-size: 15px; font-weight: bold; color: #dc2626;">AED 55</span>
+                            <span class="b2b-elec-verified-badge" style="box-sizing: border-box; font-size: 10.5px; font-weight: bold; color: #0284c7;">Verified</span>
+                        </div>
+                        <div class="b2b-elec-moq-text" style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 8px;">Min. 20 pieces</div>
+                    </a>
+                    <div class="b2b-elec-supplier-origin-row" style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: #2563eb; font-weight: bold; margin-top: auto;">
+                        <div class="b2b-elec-css-flag-box" style="box-sizing: border-box; width: 15px; height: 10px; background: linear-gradient(to bottom, #de2910 50%, #ffde00 50%); flex-shrink: 0;"></div>
+                        <span class="b2b-elec-supplier-name-truncate" style="box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">2yrs CN PrimeFootwear</span>
+                    </div>
+                </div>
+                <div class="b2b-elec-card-action-footer" style="box-sizing: border-box; padding: 0 10px 12px 10px; margin-top: 10px;">
+                    <a href="contact-supplier.html" class="b2b-elec-contact-supplier-btn" style="box-sizing: border-box; display: block; text-align: center; text-decoration: none; border: 1px solid #cbd5e1; padding: 7px 0; font-size: 11.5px; font-weight: bold; color: #334155; border-radius: 20px; background-color: #ffffff;">Contact Supplier</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+  
+
+
+
+
+
+
+
+
+<div style="box-sizing: border-box; width: 100%;  margin: 30px auto; padding: 16px; background-color: #2e0854; border-radius: 12px; display: flex; gap: 16px; flex-wrap: wrap;">
+
+    <div style="box-sizing: border-box; flex: 1; min-width: 260px; background: linear-gradient(135deg, #ff1e76 0%, #ff4b1f 50%, #ff9000 100%); border-radius: 10px; padding: 24px 20px; display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; position: relative; box-shadow: inset 0 0 20px rgba(255,255,255,0.2);">
+        
+        <div style="box-sizing: border-box;">
+            <h2 style="box-sizing: border-box; margin: 0 0 16px 0; font-size: 28px; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.15);">Flash Discount</h2>
+            <p style="box-sizing: border-box; margin: 0 0 12px 0; font-size: 16px; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 0.5px;">Ends In</p>
+            
+            <div style="box-sizing: border-box; display: flex; align-items: center; gap: 8px;">
+                <div style="box-sizing: border-box; background-color: #ffffff; color: #ff1e76; font-size: 18px; font-weight: 800; padding: 6px 10px; border-radius: 6px; min-width: 36px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">61</div>
+                <span style="color: #ffffff; font-weight: bold; font-size: 18px;">:</span>
+                <div style="box-sizing: border-box; background-color: #ffffff; color: #ff1e76; font-size: 18px; font-weight: 800; padding: 6px 10px; border-radius: 6px; min-width: 36px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">44</div>
+                <span style="color: #ffffff; font-weight: bold; font-size: 18px;">:</span>
+                <div style="box-sizing: border-box; background-color: #ffffff; color: #ff1e76; font-size: 18px; font-weight: 800; padding: 6px 10px; border-radius: 6px; min-width: 36px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">22</div>
+            </div>
+        </div>
+
+        <a href="#" style="box-sizing: border-box; display: block; width: 85%; padding: 10px 16px; background-color: #ffffff; color: #ff1e76; font-size: 14px; font-weight: bold; text-decoration: none; border-radius: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: transform 0.2s;">View All &gt;</a>
+    </div>
+
+    <div style="box-sizing: border-box; flex: 3.2; min-width: 320px; display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 12px; width: 100%;">
+        
+        <div style="box-sizing: border-box; background-color: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0; padding: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="box-sizing: border-box;">
+                <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 6px; margin-bottom: 8px;">
+                    <div style="box-sizing: border-box; width: 22px; height: 22px; border-radius: 50%; background-color: #0284c7; color: #ffffff; font-weight: bold; font-size: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">AC</div>
+                    <div style="box-sizing: border-box; font-size: 11px; font-weight: bold; color: #1e293b; line-height: 1.2; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Asian Creation Communication Co., LTD</div>
+                </div>
+                <div style="box-sizing: border-box; display: flex; gap: 4px; margin-bottom: 6px;">
+                    <span style="font-size: 9px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 1px 4px; border-radius: 2px;">ODM</span>
+                    <span style="font-size: 9px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 1px 4px; border-radius: 2px;">OEM</span>
+                    <span style="font-size: 9px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 1px 4px; border-radius: 2px;">OBM</span>
+                </div>
+                <div style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 10px; display: flex; align-items: center; gap: 3px;">
+                    <span style="color: #94a3b8;">📍</span> Phase 1: Hall 9 9B33
+                </div>
+            </div>
+            <div style="box-sizing: border-box; width: 100%; aspect-ratio: 4/3; background-color: #f1f5f9; border-radius: 6px; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=250&q=80" alt="Product 1" style="box-sizing: border-box; width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+        </div>
+
+        <div style="box-sizing: border-box; background-color: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0; padding: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="box-sizing: border-box;">
+                <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 6px; margin-bottom: 8px;">
+                    <div style="box-sizing: border-box; width: 22px; height: 22px; border-radius: 50%; background-color: #0284c7; color: #ffffff; font-weight: bold; font-size: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">AC</div>
+                    <div style="box-sizing: border-box; font-size: 11px; font-weight: bold; color: #1e293b; line-height: 1.2; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Asian Creation Communication Co., LTD</div>
+                </div>
+                <div style="box-sizing: border-box; display: flex; gap: 4px; margin-bottom: 6px;">
+                    <span style="font-size: 9px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 1px 4px; border-radius: 2px;">ODM</span>
+                    <span style="font-size: 9px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 1px 4px; border-radius: 2px;">OEM</span>
+                    <span style="font-size: 9px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 1px 4px; border-radius: 2px;">OBM</span>
+                </div>
+                <div style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 10px; display: flex; align-items: center; gap: 3px;">
+                    <span style="color: #94a3b8;">📍</span> Phase 1: Hall 9 9B33
+                </div>
+            </div>
+            <div style="box-sizing: border-box; width: 100%; aspect-ratio: 4/3; background-color: #f1f5f9; border-radius: 6px; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=250&q=80" alt="Product 2" style="box-sizing: border-box; width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+        </div>
+
+        <div style="box-sizing: border-box; background-color: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0; padding: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="box-sizing: border-box;">
+                <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 6px; margin-bottom: 8px;">
+                    <div style="box-sizing: border-box; width: 22px; height: 22px; border-radius: 50%; background-color: #0284c7; color: #ffffff; font-weight: bold; font-size: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">AC</div>
+                    <div style="box-sizing: border-box; font-size: 11px; font-weight: bold; color: #1e293b; line-height: 1.2; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Asian Creation Communication Co., LTD</div>
+                </div>
+                <div style="box-sizing: border-box; display: flex; gap: 4px; margin-bottom: 6px;">
+                    <span style="font-size: 9px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 1px 4px; border-radius: 2px;">ODM</span>
+                    <span style="font-size: 9px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 1px 4px; border-radius: 2px;">OEM</span>
+                    <span style="font-size: 9px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 1px 4px; border-radius: 2px;">OBM</span>
+                </div>
+                <div style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 10px; display: flex; align-items: center; gap: 3px;">
+                    <span style="color: #94a3b8;">📍</span> Phase 1: Hall 9 9B33
+                </div>
+            </div>
+            <div style="box-sizing: border-box; width: 100%; aspect-ratio: 4/3; background-color: #f1f5f9; border-radius: 6px; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=250&q=80" alt="Product 3" style="box-sizing: border-box; width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+        </div>
+
+        <div style="box-sizing: border-box; background-color: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0; padding: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="box-sizing: border-box;">
+                <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 6px; margin-bottom: 8px;">
+                    <div style="box-sizing: border-box; width: 22px; height: 22px; border-radius: 50%; background-color: #0284c7; color: #ffffff; font-weight: bold; font-size: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">AC</div>
+                    <div style="box-sizing: border-box; font-size: 11px; font-weight: bold; color: #1e293b; line-height: 1.2; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Asian Creation Communication Co., LTD</div>
+                </div>
+                <div style="box-sizing: border-box; display: flex; gap: 4px; margin-bottom: 6px;">
+                    <span style="font-size: 9px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 1px 4px; border-radius: 2px;">ODM</span>
+                    <span style="font-size: 9px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 1px 4px; border-radius: 2px;">OEM</span>
+                    <span style="font-size: 9px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 1px 4px; border-radius: 2px;">OBM</span>
+                </div>
+                <div style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 10px; display: flex; align-items: center; gap: 3px;">
+                    <span style="color: #94a3b8;">📍</span> Phase 1: Hall 9 9B33
+                </div>
+            </div>
+            <div style="box-sizing: border-box; width: 100%; aspect-ratio: 4/3; background-color: #f1f5f9; border-radius: 6px; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=250&q=80" alt="Product 4" style="box-sizing: border-box; width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- brands start-->
+	<style>
+        /* Full Width Wrapper */
+        .brands-section {
+            width: 100%;
+            background-color: white; /* Soft green/mint background tint */
+			/*background: linear-gradient(to bottom, #7f1d1d 0%, #ef4444 40%, #f8fafc 85%);*/
+			/* background: linear-gradient(to top, #7f1d1d 0%, #ef4444 40%, #f8fafc 100%); */
+			background: yellow;
+		
+            padding: 20px 0;
+			border-radius:10px;
+            position: relative;
+        }
+
+        /* High-End Minimalist Heading */
+        .brands-heading-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .brands-heading {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0a1931; /* Deep luxury navy */
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        /* Subtle sleek line under heading */
+      
+
+        /* Full Width Carousel viewport */
+        .carousel-viewport {
+            position: relative;
+            width: 100%;
+            padding: 20px 40px; /* Space for hover shadow expansions */
+            overflow: hidden;
+        }
+
+        /* Infinite Moving Track */
+        .carousel-track {
+            display: flex;
+            gap: 15px; /* Gap between different cards */
+            width: max-content;
+            animation: continuousScroll 25s linear infinite;
+        }
+
+        /* Smooth Pause on Hover */
+        .carousel-viewport:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        /* Premium Full-Image Brand Cards */
+        .brand-card {
+            /* Calculates exactly 6 cards per row matching screen width minus gaps */
+            width: calc((100vw - 80px - (20px * 5)) / 6); 
+            min-width: 160px; 
+            height: 60px; /* Adjusted height for full image coverage */
+            background: #ffffff;
+            border: none; /* Removed all borders */
+            padding: 0;   /* Removed all padding */
+            margin: 0;
+            border-radius: 16px; /* Smooth modern rounded corners */
+            overflow: hidden; /* Vital to clip the image to the card's border radius */
+            
+            /* Sleek, soft modern box-shadow */
+            box-shadow: 0 4px 16px rgba(10, 25, 49, 0.05);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+             box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        /* High-end hover interaction & dramatic box effect */
+        .brand-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 38px rgba(10, 25, 49, 0.15); /* Deep vibrant shadow effect */
+        }
+
+        /* The Image completely fills the card container */
+        .brand-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: stretch; /* Forces the image to stretch and completely fill the div space without gaps */
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        /* Optional: Subtle zoom effect inside the card on hover */
+        .brand-card:hover img {
+            transform: scale(1.05); 
+        }
+
+        /* Sleek Minimalist Floating Arrows */
+        .nav-arrow {
+            position: absolute;
+            top: 58%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            opacity: 0; /* Hidden initially */
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 10;
+        }
+
+        .nav-arrow svg {
+            width: 18px;
+            height: 18px;
+            fill: #0a1931;
+        }
+
+        /* Reveal Arrows cleanly on section hover */
+        .brands-section:hover .nav-arrow {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .arrow-left {
+            left: 20px;
+        }
+        .brands-section:hover .arrow-left {
+            left: 25px;
+        }
+
+        .arrow-right {
+            right: 20px;
+        }
+        .brands-section:hover .arrow-right {
+            right: 25px;
+        }
+
+        .nav-arrow:hover {
+            background-color: #0a1931;
+        }
+        .nav-arrow:hover svg {
+            fill: #ffffff;
+        }
+
+        /* Infinite Seamless Loop Animation Math */
+        @keyframes continuousScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-50% - 10px)); 
+            }
+        }
+    </style>
+
+
+<section class="brands-section">
+    <div class="brands-heading-container">
+        <h2 class="brands-heading">Top Brands</h2>
+    </div>
+    
+    <div class="nav-arrow arrow-left">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </div>
+
+    <div class="carousel-viewport">
+        <div class="carousel-track">
+            <div class="brand-card">
+                <img src="https://i.ibb.co/jP6y7dnL/brands3.png" alt="LG">
+            </div>
+            <div class="brand-card">
+                <img src="https://i.ibb.co/fVZt433d/brands7.png" alt="Samsung">
+            </div>
+            <div class="brand-card">
+                <img src="https://i.ibb.co/93h8Ft8T/brands11.png" alt="Samsung">
+            </div>
+            <div class="brand-card">
+                <img src="https://i.ibb.co/CGhbv91/brands8.png" alt="Samsung">
+            </div>
+			
+			            <div class="brand-card">
+                <img src="https://i.ibb.co/jP6y7dnL/brands3.png" alt="LG">
+            </div>
+            <div class="brand-card">
+                <img src="https://i.ibb.co/fVZt433d/brands7.png" alt="Samsung">
+            </div>
+            <div class="brand-card">
+                <img src="https://i.ibb.co/93h8Ft8T/brands11.png" alt="Samsung">
+            </div>
+            <div class="brand-card">
+                <img src="https://i.ibb.co/CGhbv91/brands8.png" alt="Samsung">
+            </div>
+			            <div class="brand-card">
+                <img src="https://i.ibb.co/jP6y7dnL/brands3.png" alt="LG">
+            </div>
+            <div class="brand-card">
+                <img src="https://i.ibb.co/fVZt433d/brands7.png" alt="Samsung">
+            </div>
+            <div class="brand-card">
+                <img src="https://i.ibb.co/93h8Ft8T/brands11.png" alt="Samsung">
+            </div>
+            <div class="brand-card">
+                <img src="https://i.ibb.co/CGhbv91/brands8.png" alt="Samsung">
+            </div>
+			
+
+
+        </div>
+    </div>
+
+    <div class="nav-arrow arrow-right">
+        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </div>
+</section>
+<!-- brands ends-->
+
+
+
+
+
+
+
+
+
+
+
+<div class="b2b-custom-sourcing-container" style="box-sizing: border-box; width: 100%; margin: 30px auto; padding: 5px 5px;  background: linear-gradient(to bottom, #1e3a8a 0%, #3b82f6 40%, #f8fafc 85%); border-radius: 16px; border: 1px solid #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; display: flex; flex-wrap: wrap; align-items: center; gap: 40px; justify-content: space-between;">
+    
+    <div class="b2b-custom-sourcing-text-block" style="box-sizing: border-box; flex: 1; min-width: 320px; max-width: 550px;">
+        <span style="box-sizing: border-box; display: inline-block; font-size: 12px; font-weight: 800; text-transform: uppercase; tracking: 1.5px; color: #2563eb; background: rgba(37, 99, 235, 0.08); padding: 6px 14px; border-radius: 20px; margin-bottom: 16px;">Global Procurement</span>
+        <h2 class="b2b-custom-sourcing-main-title" style="box-sizing: border-box; font-size: 36px; font-weight: 800; color: #0f172a; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.5px;">EASY SOURCING</h2>
+        <p class="b2b-custom-sourcing-sub-description" style="box-sizing: border-box; font-size: 15px; color: #475569; line-height: 1.6; margin: 0 0 28px 0;">An easy way to post your sourcing requests and get quotes.</p>
+        
+        <div class="b2b-custom-features-list" style="box-sizing: border-box; display: flex; flex-direction: column; gap: 14px;">
+            <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 12px;">
+                <div style="box-sizing: border-box; width: 6px; height: 6px; border-radius: 50%; background: #2563eb; margin-top: 8px; flex-shrink: 0;"></div>
+                <span style="box-sizing: border-box; font-size: 14.5px; color: #334155; font-weight: 500;">One request, multiple quotes</span>
+            </div>
+            <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 12px;">
+                <div style="box-sizing: border-box; width: 6px; height: 6px; border-radius: 50%; background: #2563eb; margin-top: 8px; flex-shrink: 0;"></div>
+                <span style="box-sizing: border-box; font-size: 14.5px; color: #334155; font-weight: 500;">Verified suppliers matching</span>
+            </div>
+            <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 12px;">
+                <div style="box-sizing: border-box; width: 6px; height: 6px; border-radius: 50%; background: #2563eb; margin-top: 8px; flex-shrink: 0;"></div>
+                <span style="box-sizing: border-box; font-size: 14.5px; color: #334155; font-weight: 500;">Quotes comparison and sample request</span>
+            </div>
+        </div>
+
+        <a href="#" class="b2b-custom-learn-more" style="box-sizing: border-box; display: inline-flex; align-items: center; margin-top: 32px; font-size: 14px; font-weight: 700; color: #2563eb; text-decoration: none; transition: color 0.2s;">
+            Learn More <span style="box-sizing: border-box; margin-left: 6px; transform: translateY(-0.5px);">➔</span>
+        </a>
+    </div>
+
+    <div class="b2b-custom-sourcing-form-card" style="box-sizing: border-box; flex: 1; min-width: 320px; max-width: 540px; background: #ffffff; padding: 36px; border-radius: 16px; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02); border: 1px solid rgba(226, 232, 240, 0.8);">
+        <h3 class="b2b-custom-form-heading" style="box-sizing: border-box; font-size: 20px; font-weight: 700; color: #0f172a; margin: 0 0 24px 0; letter-spacing: -0.3px;">Want to get quotations?</h3>
+        
+        <form style="box-sizing: border-box; display: flex; flex-direction: column; gap: 18px;">
+            
+            <div style="box-sizing: border-box;">
+                <input type="text" placeholder="Product Name or Keywords" style="box-sizing: border-box; width: 100%; height: 46px; padding: 0 16px; font-size: 14px; color: #0f172a; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; font-family: inherit;">
+            </div>
+
+            <div style="box-sizing: border-box;">
+                <textarea placeholder="Product Description" rows="4" style="box-sizing: border-box; width: 100%; padding: 14px 16px; font-size: 14px; color: #0f172a; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; resize: vertical; min-height: 100px; font-family: inherit;"></textarea>
+            </div>
+
+            <div style="box-sizing: border-box; display: flex; gap: 12px; align-items: center;">
+                <div style="box-sizing: border-box; flex: 1;">
+                    <input type="number" placeholder="Purchase Quantity" min="1" style="box-sizing: border-box; width: 100%; height: 46px; padding: 0 16px; font-size: 14px; color: #0f172a; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; font-family: inherit;">
+                </div>
+                <div style="box-sizing: border-box; width: 140px; position: relative;">
+                    <select style="box-sizing: border-box; width: 100%; height: 46px; padding: 0 36px 0 14px; font-size: 14px; color: #334155; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; cursor: pointer; font-family: inherit; appearance: none; -webkit-appearance: none;">
+                        <option value="pieces">Piece(s)</option>
+                        <option value="sets">Set(s)</option>
+                        <option value="tons">Ton(s)</option>
+                        <option value="kg">Kilogram(s)</option>
+                    </select>
+                    <div style="box-sizing: border-box; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #64748b;"></div>
+                </div>
+            </div>
+
+            <div style="box-sizing: border-box; margin-top: 8px;">
+                <button type="submit" style="box-sizing: border-box; width: 100%; height: 48px; background: #e11d48; color: #ffffff; font-size: 14px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; text-align: center; font-family: inherit; letter-spacing: 0.3px; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.15);">
+                    Post Your Request Now
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+
+<! v--erified supplier -->
+
+<div style="box-sizing: border-box; width: 100%;  margin: 5px auto; padding: 5px; background-color: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;  position: relative;">
+    
+    <div style="box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 style="box-sizing: border-box; font-size: 22px; font-weight: bold; color: #333333; margin: 0;">Featured Suppliers</h2>
+        <a href="#" style="box-sizing: border-box; font-size: 13px; color: #666666; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+            View more <span style="font-size: 12px; line-height: 1;">&#10142;</span>
+        </a>
+    </div>
+
+    <div style="box-sizing: border-box; display: flex; gap: 16px; overflow-x: auto; position: relative; padding: 4px 0; -webkit-overflow-scrolling: touch;">
+        
+        <button type="button" style="box-sizing: border-box; position: absolute; left: 8px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; background-color: rgba(0,0,0,0.6); border: none; color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; font-size: 22px; font-weight: bold; line-height: 1; padding-bottom: 4px;">&#8249;</button>
+
+        <div style="box-sizing: border-box; width: 235px; flex-shrink: 0; border-radius: 12px; background: linear-gradient(to bottom, #1e3a8a 0%, #3b82f6 40%, #f8fafc 85%); padding: 18px 14px; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
+            <div style="box-sizing: border-box;">
+                <h3 style="box-sizing: border-box; font-size: 16px; font-weight: bold; color: #ffffff; margin: 0 0 12px 0; line-height: 1.3; min-height: 42px;">Jingjiang Fuji Technology Co., Ltd.</h3>
+                <div style="box-sizing: border-box; display: inline-flex; align-items: center; background: #ffffff; border-radius: 20px; padding: 2px 10px 2px 4px; gap: 4px; margin-bottom: 14px; border: 1px solid #f59e0b;">
+                    <span style="box-sizing: border-box; background: #f59e0b; color: #ffffff; font-size: 9px; font-weight: bold; padding: 2px 6px; border-radius: 12px; text-transform: uppercase;">Verified Supplier</span>
+                    <span style="box-sizing: border-box; color: #f59e0b; font-size: 10px; font-weight: bold;">Gold</span>
+                    <span style="box-sizing: border-box; background: #fef3c7; color: #d97706; font-size: 9px; font-weight: bold; padding: 1px 4px; border-radius: 4px; margin-left: 2px;">4 Yrs</span>
+                </div>
+                <div style="box-sizing: border-box; color: rgba(255,255,255,0.95); font-size: 12px; margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
+                    <span style="font-size: 11px;">📍</span> Shanghai, China
+                </div>
+                <div style="box-sizing: border-box; color: rgba(255,255,255,0.85); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    📦 Main Products: weichai, Ca...
+                </div>
+            </div>
+            <div style="box-sizing: border-box; display: flex; gap: 10px; margin-top: auto;">
+                <div style="box-sizing: border-box; flex: 1; background: #ffffff; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0; text-align: center;">
+                    <div style="box-sizing: border-box; width: 100%; height: 65px; background: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center;"></div>
+                    <div style="box-sizing: border-box; background: rgba(0,0,0,0.5); color: #ffffff; font-size: 10px; padding: 3px 0; font-weight: bold;">Negotiable</div>
+                </div>
+                <div style="box-sizing: border-box; flex: 1; background: #ffffff; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0; text-align: center;">
+                    <div style="box-sizing: border-box; width: 100%; height: 65px; background: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center;"></div>
+                    <div style="box-sizing: border-box; background: rgba(0,0,0,0.5); color: #ffffff; font-size: 10px; padding: 3px 0; font-weight: bold;">Negotiable</div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div style="box-sizing: border-box; width: 235px; flex-shrink: 0; border-radius: 12px; background: linear-gradient(to bottom, #115e59 0%, #14b8a6 40%, #f8fafc 85%); padding: 18px 14px; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
+            <div style="box-sizing: border-box;">
+                <h3 style="box-sizing: border-box; font-size: 16px; font-weight: bold; color: #ffffff; margin: 0 0 12px 0; line-height: 1.3; min-height: 42px;">Ningbo Jiangbei Tiansheng plastic...</h3>
+                <div style="box-sizing: border-box; display: inline-flex; align-items: center; background: #ffffff; border-radius: 20px; padding: 2px 10px 2px 4px; gap: 4px; margin-bottom: 14px; border: 1px solid #f59e0b;">
+                    <span style="box-sizing: border-box; background: #f59e0b; color: #ffffff; font-size: 9px; font-weight: bold; padding: 2px 6px; border-radius: 12px; text-transform: uppercase;">Verified Supplier</span>
+                    <span style="box-sizing: border-box; color: #f59e0b; font-size: 10px; font-weight: bold;">Gold</span>
+                    <span style="box-sizing: border-box; background: #fef3c7; color: #d97706; font-size: 9px; font-weight: bold; padding: 1px 4px; border-radius: 4px; margin-left: 2px;">1 Yr</span>
+                </div>
+                <div style="box-sizing: border-box; color: rgba(255,255,255,0.85); font-size: 12px; margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
+                    <span style="font-size: 11px;">📍</span> Ningbo, China
+                </div>
+                <div style="box-sizing: border-box; color: rgba(255,255,255,0.85); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    📦 Main Products: Razor
+                </div>
+                <div style="box-sizing: border-box; color: #ffffff; font-size: 16px; margin-top: 10px; cursor: pointer; line-height: 1;">&#10142;</div>
+            </div>
+            <div style="box-sizing: border-box; display: flex; gap: 10px; margin-top: auto;">
+                <div style="box-sizing: border-box; flex: 1; background: #ffffff; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0; text-align: center;">
+                    <div style="box-sizing: border-box; width: 100%; height: 65px; background: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1626262709214-749e75558be2?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center;"></div>
+                    <div style="box-sizing: border-box; background: rgba(0,0,0,0.5); color: #ffffff; font-size: 10px; padding: 3px 0; font-weight: bold;">Negotiable</div>
+                </div>
+                <div style="box-sizing: border-box; flex: 1; background: #ffffff; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0; text-align: center;">
+                    <div style="box-sizing: border-box; width: 100%; height: 65px; background: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1509395062183-67c5ad6faff9?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center;"></div>
+                    <div style="box-sizing: border-box; background: rgba(0,0,0,0.5); color: #ffffff; font-size: 10px; padding: 3px 0; font-weight: bold;">Negotiable</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="box-sizing: border-box; width: 235px; flex-shrink: 0; border-radius: 12px; background: linear-gradient(to bottom, #7f1d1d 0%, #ef4444 40%, #f8fafc 85%); padding: 18px 14px; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
+            <div style="box-sizing: border-box;">
+                <h3 style="box-sizing: border-box; font-size: 16px; font-weight: bold; color: #ffffff; margin: 0 0 12px 0; line-height: 1.3; min-height: 42px;">Shandong Shoukun Metal Materials Co.,...</h3>
+                <div style="box-sizing: border-box; display: inline-flex; align-items: center; background: #ffffff; border-radius: 20px; padding: 2px 10px 2px 4px; gap: 4px; margin-bottom: 14px; border: 1px solid #94a3b8;">
+                    <span style="box-sizing: border-box; background: #64748b; color: #ffffff; font-size: 9px; font-weight: bold; padding: 2px 6px; border-radius: 12px; text-transform: uppercase;">Verified Supplier</span>
+                    <span style="box-sizing: border-box; color: #64748b; font-size: 10px; font-weight: bold;">Silver</span>
+                    <span style="box-sizing: border-box; background: #f1f5f9; color: #475569; font-size: 9px; font-weight: bold; padding: 1px 4px; border-radius: 4px; margin-left: 2px;">1 Yr</span>
+                </div>
+                <div style="box-sizing: border-box; color: rgba(255,255,255,0.85); font-size: 12px; margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
+                    <span style="font-size: 11px;">📍</span> Liaocheng, Shandong, China
+                </div>
+                <div style="box-sizing: border-box; color: rgba(255,255,255,0.85); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    📦 Main Products: Steel plate,...
+                </div>
+            </div>
+            <div style="box-sizing: border-box; display: flex; gap: 10px; margin-top: auto;">
+                <div style="box-sizing: border-box; flex: 1; background: #ffffff; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0; text-align: center;">
+                    <div style="box-sizing: border-box; width: 100%; height: 65px; background: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center;"></div>
+                    <div style="box-sizing: border-box; background: rgba(0,0,0,0.5); color: #ffffff; font-size: 10px; padding: 3px 0; font-weight: bold;">Negotiable</div>
+                </div>
+                <div style="box-sizing: border-box; flex: 1; background: #ffffff; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0; text-align: center;">
+                    <div style="box-sizing: border-box; width: 100%; height: 65px; background: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center;"></div>
+                    <div style="box-sizing: border-box; background: rgba(0,0,0,0.5); color: #ffffff; font-size: 10px; padding: 3px 0; font-weight: bold;">Negotiable</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="box-sizing: border-box; width: 235px; flex-shrink: 0; border-radius: 12px; background: linear-gradient(to bottom, #4c1d95 0%, #8b5cf6 40%, #f8fafc 85%); padding: 18px 14px; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
+            <div style="box-sizing: border-box;">
+                <h3 style="box-sizing: border-box; font-size: 16px; font-weight: bold; color: #ffffff; margin: 0 0 12px 0; line-height: 1.3; min-height: 42px;">Guangzhou Xiebang Machinery Co., Ltd.</h3>
+                <div style="box-sizing: border-box; display: inline-flex; align-items: center; background: #ffffff; border-radius: 20px; padding: 2px 10px 2px 4px; gap: 4px; margin-bottom: 14px; border: 1px solid #f59e0b;">
+                    <span style="box-sizing: border-box; background: #f59e0b; color: #ffffff; font-size: 9px; font-weight: bold; padding: 2px 6px; border-radius: 12px; text-transform: uppercase;">Verified Supplier</span>
+                    <span style="box-sizing: border-box; color: #f59e0b; font-size: 10px; font-weight: bold;">Gold</span>
+                    <span style="box-sizing: border-box; background: #fef3c7; color: #d97706; font-size: 9px; font-weight: bold; padding: 1px 4px; border-radius: 4px; margin-left: 2px;">1 Yr</span>
+                </div>
+                <div style="box-sizing: border-box; color: rgba(255,255,255,0.85); font-size: 12px; margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
+                    <span style="font-size: 11px;">📍</span> Guangzhou, Guangdong, C...
+                </div>
+                <div style="box-sizing: border-box; color: rgba(255,255,255,0.85); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    📦 Main Products: Elastic cou...
+                </div>
+            </div>
+            <div style="box-sizing: border-box; display: flex; gap: 10px; margin-top: auto;">
+                <div style="box-sizing: border-box; flex: 1; background: #ffffff; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0; text-align: center;">
+                    <div style="box-sizing: border-box; width: 100%; height: 65px; background: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center;"></div>
+                    <div style="box-sizing: border-box; background: rgba(0,0,0,0.5); color: #ffffff; font-size: 10px; padding: 3px 0; font-weight: bold;">Negotiable</div>
+                </div>
+                <div style="box-sizing: border-box; flex: 1; background: #ffffff; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0; text-align: center;">
+                    <div style="box-sizing: border-box; width: 100%; height: 65px; background: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center;"></div>
+                    <div style="box-sizing: border-box; background: rgba(0,0,0,0.5); color: #ffffff; font-size: 10px; padding: 3px 0; font-weight: bold;">Negotiable</div>
+                </div>
+            </div>
+        </div>
+		
+		
+		 <div style="box-sizing: border-box; width: 235px; flex-shrink: 0; border-radius: 12px; background: linear-gradient(to bottom, #1e3a8a 0%, #3b82f6 40%, #f8fafc 85%); padding: 18px 14px; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
+            <div style="box-sizing: border-box;">
+                <h3 style="box-sizing: border-box; font-size: 16px; font-weight: bold; color: #ffffff; margin: 0 0 12px 0; line-height: 1.3; min-height: 42px;">Jingjiang Fuji Technology Co., Ltd.</h3>
+                <div style="box-sizing: border-box; display: inline-flex; align-items: center; background: #ffffff; border-radius: 20px; padding: 2px 10px 2px 4px; gap: 4px; margin-bottom: 14px; border: 1px solid #f59e0b;">
+                    <span style="box-sizing: border-box; background: #f59e0b; color: #ffffff; font-size: 9px; font-weight: bold; padding: 2px 6px; border-radius: 12px; text-transform: uppercase;">Verified Supplier</span>
+                    <span style="box-sizing: border-box; color: #f59e0b; font-size: 10px; font-weight: bold;">Gold</span>
+                    <span style="box-sizing: border-box; background: #fef3c7; color: #d97706; font-size: 9px; font-weight: bold; padding: 1px 4px; border-radius: 4px; margin-left: 2px;">4 Yrs</span>
+                </div>
+                <div style="box-sizing: border-box; color: rgba(255,255,255,0.95); font-size: 12px; margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
+                    <span style="font-size: 11px;">📍</span> Shanghai, China
+                </div>
+                <div style="box-sizing: border-box; color: rgba(255,255,255,0.85); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    📦 Main Products: weichai, Ca...
+                </div>
+            </div>
+            <div style="box-sizing: border-box; display: flex; gap: 10px; margin-top: auto;">
+                <div style="box-sizing: border-box; flex: 1; background: #ffffff; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0; text-align: center;">
+                    <div style="box-sizing: border-box; width: 100%; height: 65px; background: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center;"></div>
+                    <div style="box-sizing: border-box; background: rgba(0,0,0,0.5); color: #ffffff; font-size: 10px; padding: 3px 0; font-weight: bold;">Negotiable</div>
+                </div>
+                <div style="box-sizing: border-box; flex: 1; background: #ffffff; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0; text-align: center;">
+                    <div style="box-sizing: border-box; width: 100%; height: 65px; background: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center;"></div>
+                    <div style="box-sizing: border-box; background: rgba(0,0,0,0.5); color: #ffffff; font-size: 10px; padding: 3px 0; font-weight: bold;">Negotiable</div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" style="box-sizing: border-box; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; background-color: rgba(0,0,0,0.6); border: none; color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; font-size: 22px; font-weight: bold; line-height: 1; padding-bottom: 4px;">&#8250;</button>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div style="box-sizing: border-box; width: 100%; max-width: 100%; margin: 20px 0; padding: 0; position: relative; overflow: hidden; background-color: #0b1a30; font-family: Arial, Helvetica, sans-serif;">
+    
+    <style>
+        @keyframes b2bAdsSlider {
+            0% { transform: translateX(0%); }
+            28% { transform: translateX(0%); }
+            33% { transform: translateX(-100%); }
+            61% { transform: translateX(-100%); }
+            66% { transform: translateX(-200%); }
+            95% { transform: translateX(-200%); }
+            100% { transform: translateX(0%); }
+        }
+    </style>
+
+    <div style="box-sizing: border-box; display: flex; width: 100%; height: 2in; animation: b2bAdsSlider 15s infinite ease-in-out;">
+        
+        <div style="box-sizing: border-box; width: 100%; flex-shrink: 0; height: 2in; display: flex; justify-content: center; align-items: center; background-color: #0b1a30;">
+            <a href="#" style="box-sizing: border-box; display: block; width: 100%; height: 100%;">
+                <img src="https://i.ibb.co/nNR7twBv/ads2.jpg" alt="Advertisement 1" style="box-sizing: border-box; width: 100%; height: 4in; object-fit: fill; display: block;">
+            </a>
+        </div>
+
+        <div style="box-sizing: border-box; width: 100%; flex-shrink: 0; height: 2in; display: flex; justify-content: center; align-items: center; background-color: #0b1a30;">
+            <a href="#" style="box-sizing: border-box; display: block; width: 100%; height: 100%;">
+                <img src="https://i.ibb.co/Mk1wtmwb/ads.jpg" alt="Advertisement 2" style="box-sizing: border-box; width: 100%; height: 4in; object-fit: fill; display: block;">
+            </a>
+        </div>
+
+        <div style="box-sizing: border-box; width: 100%; flex-shrink: 0; height: 2in; display: flex; justify-content: center; align-items: center; background-color: #0b1a30;">
+            <a href="#" style="box-sizing: border-box; display: block; width: 100%; height: 100%;">
+                <img src="https://i.ibb.co/Mk1wtmwb/ads.jpg" alt="Advertisement 3" style="box-sizing: border-box; width: 100%; height: 4in; object-fit: fill; display: block;">
+            </a>
+        </div>
+
+    </div>
+
+    <button type="button" style="box-sizing: border-box; position: absolute; left: 20px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; background-color: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; font-size: 22px; font-weight: bold; line-height: 1; padding-bottom: 4px;">
+        &#8249;
+    </button>
+
+    <button type="button" style="box-sizing: border-box; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; background-color: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; font-size: 22px; font-weight: bold; line-height: 1; padding-bottom: 4px;">
+        &#8250;
+    </button>
+
+</div>
+
+
+
+
+
+
+
+<div style="box-sizing: border-box; width: 100%; margin: 30px auto; padding: 24px; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; font-family: Arial, Helvetica, sans-serif;">
+    
+    <div style="box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <div style="box-sizing: border-box; text-align: center; flex-grow: 1; margin-left: 90px;">
+            <h2 style="box-sizing: border-box; font-size: 24px; font-weight: 700; color: #222222; margin: 0 0 4px 0;">Trade Shows</h2>
+            <p style="box-sizing: border-box; font-size: 13px; color: #666666; margin: 0;">List of the trade shows our platform will take part in.</p>
+        </div>
+        <a href="#" style="box-sizing: border-box; padding: 8px 16px; background-color: #ef4444; color: #ffffff; font-size: 13px; font-weight: bold; text-decoration: none; border-radius: 4px; transition: background-color 0.2s;">View More</a>
+    </div>
+
+    <div style="box-sizing: border-box; display: flex; gap: 24px; flex-wrap: wrap;">
+        
+        <div style="box-sizing: border-box; flex: 1.2; min-width: 320px; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0; background-color: #f8fafc; position: relative; min-height: 360px; display: flex; flex-direction: column; justify-content: flex-end; background-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0) 100%), url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">
+            
+            <div style="box-sizing: border-box; position: absolute; top: 16px; left: 16px; display: flex; flex-direction: column; gap: 8px;">
+                <span style="box-sizing: border-box; background-color: #f59e0b; color: #ffffff; font-size: 11px; font-weight: bold; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; width: max-content;">ITF Expo</span>
+                <span style="box-sizing: border-box; background-color: #ef4444; color: #ffffff; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px; width: max-content;">F17</span>
+            </div>
+
+            <div style="box-sizing: border-box; padding: 24px; color: #ffffff;">
+                <h3 style="box-sizing: border-box; font-size: 22px; font-weight: 700; margin: 0 0 10px 0; line-height: 1.3; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">ITF Intertex Portugal 2026</h3>
+                <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #e2e8f0;">
+                    <div style="box-sizing: border-box; display: flex; align-items: center; gap: 6px;">
+                        <span>📅</span> <strong>Duration:</strong> May 19 - 21, 2026
+                    </div>
+                    <div style="box-sizing: border-box; display: flex; align-items: center; gap: 6px;">
+                        <span>📍</span> <strong>Location:</strong> Exponor, Porto, Portugal
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="box-sizing: border-box; flex: 1; min-width: 320px; display: flex; flex-direction: column; gap: 16px; justify-content: center;">
+            
+            <div style="box-sizing: border-box; display: flex; gap: 16px; align-items: center; position: relative;">
+                <div style="box-sizing: border-box; display: flex; flex-direction: column; align-items: center; position: relative; height: 100%;">
+                    <div style="box-sizing: border-box; width: 12px; height: 12px; border-radius: 50%; background-color: #3b82f6; border: 2px solid #ffffff; box-shadow: 0 0 0 2px #3b82f6; z-index: 2;"></div>
+                    <div style="box-sizing: border-box; width: 2px; position: absolute; top: 12px; bottom: -28px; background-color: #cbd5e1; z-index: 1;"></div>
+                </div>
+                <div style="box-sizing: border-box; display: flex; gap: 12px; background-color: #ffffff; border: 1px solid #3b82f6; border-radius: 6px; padding: 10px; width: 100%; box-shadow: 0 2px 8px rgba(59,130,246,0.08);">
+                    <div style="box-sizing: border-box; width: 85px; height: 65px; border-radius: 4px; background-color: #10b981; background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center; flex-shrink: 0;"></div>
+                    <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="box-sizing: border-box; font-size: 14px; font-weight: 700; color: #1e293b; margin: 0 0 4px 0;">ProPak China 2026</h4>
+                        <span style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 2px;">📅 Duration: Jun 15 - 17, 2026</span>
+                        <span style="box-sizing: border-box; font-size: 11px; color: #64748b;">📍 Location: NECC (Shanghai), China</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="box-sizing: border-box; display: flex; gap: 16px; align-items: center; position: relative;">
+                <div style="box-sizing: border-box; display: flex; flex-direction: column; align-items: center; position: relative; height: 100%;">
+                    <div style="box-sizing: border-box; width: 12px; height: 12px; border-radius: 50%; background-color: #ffffff; border: 2px solid #cbd5e1; z-index: 2;"></div>
+                    <div style="box-sizing: border-box; width: 2px; position: absolute; top: 12px; bottom: -28px; background-color: #cbd5e1; z-index: 1;"></div>
+                </div>
+                <div style="box-sizing: border-box; display: flex; gap: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; width: 100%;">
+                    <div style="box-sizing: border-box; width: 85px; height: 65px; border-radius: 4px; background-color: #6366f1; background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center; flex-shrink: 0;"></div>
+                    <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="box-sizing: border-box; font-size: 14px; font-weight: 700; color: #334155; margin: 0 0 4px 0;">The CBD (Guangzhou) 2026</h4>
+                        <span style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 2px;">📅 Duration: Jul 8 - 11, 2026</span>
+                        <span style="box-sizing: border-box; font-size: 11px; color: #64748b;">📍 Location: Guangzhou, China</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="box-sizing: border-box; display: flex; gap: 16px; align-items: center; position: relative;">
+                <div style="box-sizing: border-box; display: flex; flex-direction: column; align-items: center; position: relative; height: 100%;">
+                    <div style="box-sizing: border-box; width: 12px; height: 12px; border-radius: 50%; background-color: #ffffff; border: 2px solid #cbd5e1; z-index: 2;"></div>
+                </div>
+                <div style="box-sizing: border-box; display: flex; gap: 12px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; width: 100%;">
+                    <div style="box-sizing: border-box; width: 85px; height: 65px; border-radius: 4px; background-color: #0f172a; background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=150&q=80'); background-size: cover; background-position: center; flex-shrink: 0;"></div>
+                    <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="box-sizing: border-box; font-size: 14px; font-weight: 700; color: #334155; margin: 0 0 4px 0;">INAPA 2026</h4>
+                        <span style="box-sizing: border-box; font-size: 11px; color: #64748b; margin-bottom: 2px;">📅 Duration: May 20 - 22, 2026</span>
+                        <span style="box-sizing: border-box; font-size: 11px; color: #64748b;">📍 Location: Jakarta, Indonesia</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<div style="box-sizing: border-box; width: 100%;  margin: 30px auto; padding: 20px; background-color: #612224; border-radius: 12px; font-family: Arial, Helvetica, sans-serif; display: flex; gap: 20px; flex-wrap: wrap; align-items: center; overflow: hidden;">
+
+    <div style="box-sizing: border-box; flex: 1; min-width: 260px; padding: 10px 15px; display: flex; flex-direction: column; justify-content: center;">
+        <h2 style="box-sizing: border-box; margin: 0 0 16px 0; font-size: 26px; font-weight: 800; color: #ffffff; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; letter-spacing: -0.5px;">
+            <span style="color: #ff6a00;">Alibaba</span> Guaranteed
+        </h2>
+        
+        <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+            <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; color: #ffffff; font-size: 14px; font-weight: bold;">
+                <span style="box-sizing: border-box; width: 18px; height: 18px; background-color: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #ffffff;">✓</span>
+                Quick order and pay
+            </div>
+            <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; color: #ffffff; font-size: 14px; font-weight: bold;">
+                <span style="box-sizing: border-box; width: 18px; height: 18px; background-color: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #ffffff;">✓</span>
+                On-time delivery
+            </div>
+            <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; color: #ffffff; font-size: 14px; font-weight: bold;">
+                <span style="box-sizing: border-box; width: 18px; height: 18px; background-color: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #ffffff;">✓</span>
+                Money-back guarantee
+            </div>
+        </div>
+
+        <a href="#" style="box-sizing: border-box; width: max-content; padding: 10px 22px; background-color: #ffffff; color: #612224; font-size: 13px; font-weight: bold; text-decoration: none; border-radius: 20px; text-align: center; transition: background-color 0.2s;">Explore now</a>
+    </div>
+
+    <div style="box-sizing: border-box; flex: 3.5; min-width: 320px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; width: 100%;">
+        
+        <div style="box-sizing: border-box; background-color: #ffffff; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; padding: 8px; justify-content: space-between;">
+            <div style="box-sizing: border-box; width: 100%; aspect-ratio: 1/1; background-color: #f8fafc; border-radius: 6px; overflow: hidden; margin-bottom: 8px;">
+                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=300&q=80" alt="Product 1" style="box-sizing: border-box; width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+            <div style="box-sizing: border-box; padding: 2px 4px;">
+                <div style="box-sizing: border-box; font-size: 15px; font-weight: 800; color: #222222; margin-bottom: 2px;">AED 5.73</div>
+                <div style="box-sizing: border-box; font-size: 11px; color: #888888;">1.4K+ sold</div>
+            </div>
+        </div>
+
+        <div style="box-sizing: border-box; background-color: #ffffff; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; padding: 8px; justify-content: space-between;">
+            <div style="box-sizing: border-box; width: 100%; aspect-ratio: 1/1; background-color: #f8fafc; border-radius: 6px; overflow: hidden; margin-bottom: 8px;">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300&q=80" alt="Product 2" style="box-sizing: border-box; width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+            <div style="box-sizing: border-box; padding: 2px 4px;">
+                <div style="box-sizing: border-box; font-size: 15px; font-weight: 800; color: #222222; margin-bottom: 2px;">AED 71.05</div>
+                <div style="box-sizing: border-box; font-size: 11px; color: #ff6a00; font-weight: bold;">FREE shipping</div>
+            </div>
+        </div>
+
+        <div style="box-sizing: border-box; background-color: #ffffff; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; padding: 8px; justify-content: space-between;">
+            <div style="box-sizing: border-box; width: 100%; aspect-ratio: 1/1; background-color: #f8fafc; border-radius: 6px; overflow: hidden; margin-bottom: 8px;">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80" alt="Product 3" style="box-sizing: border-box; width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+            <div style="box-sizing: border-box; padding: 2px 4px;">
+                <div style="box-sizing: border-box; font-size: 15px; font-weight: 800; color: #222222; margin-bottom: 2px;">AED 0.374</div>
+                <div style="box-sizing: border-box; font-size: 11px; color: #ff6a00; font-weight: bold;">FREE shipping</div>
+            </div>
+        </div>
+
+        <div style="box-sizing: border-box; background-color: #ffffff; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; padding: 8px; justify-content: space-between;">
+            <div style="box-sizing: border-box; width: 100%; aspect-ratio: 1/1; background-color: #f8fafc; border-radius: 6px; overflow: hidden; margin-bottom: 8px;">
+                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=300&q=80" alt="Product 4" style="box-sizing: border-box; width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+            <div style="box-sizing: border-box; padding: 2px 4px;">
+                <div style="box-sizing: border-box; font-size: 15px; font-weight: 800; color: #222222; margin-bottom: 2px;">AED 15.15</div>
+                <div style="box-sizing: border-box; font-size: 11px; color: #888888;">6.3K+ sold</div>
+            </div>
+        </div>
+
+        <div style="box-sizing: border-box; background-color: #ffffff; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; padding: 8px; justify-content: space-between;">
+            <div style="box-sizing: border-box; width: 100%; aspect-ratio: 1/1; background-color: #f8fafc; border-radius: 6px; overflow: hidden; margin-bottom: 8px;">
+                <img src="https://images.unsplash.com/photo-1608248597481-496100c8c836?auto=format&fit=crop&w=300&q=80" alt="Product 5" style="box-sizing: border-box; width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+            <div style="box-sizing: border-box; padding: 2px 4px;">
+                <div style="box-sizing: border-box; font-size: 15px; font-weight: 800; color: #222222; margin-bottom: 2px;">AED 18.63</div>
+                <div style="box-sizing: border-box; font-size: 11px; color: #ff6a00; font-weight: bold;">FREE shipping</div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div style="border-radius:10px; box-sizing: border-box; width: 100%; background-color: #004d4d; padding: 60px 40px 30px 40px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; border-top: 1px solid #e2e8f0; clear: both;">
+    
+    <div style="  box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; max-width: 1440px; margin: 0 auto 50px auto;">
+        
+        <div style="box-sizing: border-box; flex: 1; min-width: 200px;">
+            <h4 style="box-sizing: border-box; font-size: 15px; font-weight: 700; color: white; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 0.5px;">Get Support</h4>
+            <ul style="box-sizing: border-box; list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Help Center</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Live Chat</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Check Order Status</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Refunds</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Report Abuse</a></li>
+            </ul>
+        </div>
+
+        <div style="box-sizing: border-box; flex: 1; min-width: 200px;">
+            <h4 style="box-sizing: border-box; font-size: 15px; font-weight: 700; color: white; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 0.5px;">Payments & Protection</h4>
+            <ul style="box-sizing: border-box; list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Safe and Easy Payments</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Money-back Policy</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">On-time Shipping</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">After-sales Protections</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Product Monitoring Services</a></li>
+            </ul>
+        </div>
+
+        <div style="box-sizing: border-box; flex: 1; min-width: 200px;">
+            <h4 style="box-sizing: border-box; font-size: 15px; font-weight: 700; color: white; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 0.5px;">Sourcing Solutions</h4>
+            <ul style="box-sizing: border-box; list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Request for Quotation</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Membership Program</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Sales Tax and VAT</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">B2B Marketplace Reads</a></li>
+            </ul>
+        </div>
+
+        <div style="box-sizing: border-box; flex: 1; min-width: 200px;">
+            <h4 style="box-sizing: border-box; font-size: 15px; font-weight: 700; color: white; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 0.5px;">Sell with Us</h4>
+            <ul style="box-sizing: border-box; list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Start Selling</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Seller Central</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Become a Verified Supplier</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Partnerships</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Download App for Suppliers</a></li>
+            </ul>
+        </div>
+
+        <div style="box-sizing: border-box; flex: 1; min-width: 200px;">
+            <h4 style="box-sizing: border-box; font-size: 15px; font-weight: 700; color: white; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 0.5px;">Get to Know Us</h4>
+            <ul style="box-sizing: border-box; list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">About Our Platform</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Corporate Responsibility</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">News Center</a></li>
+                <li><a href="#" style="box-sizing: border-box; font-size: 14px; color: white; text-decoration: none; transition: color 0.2s;">Careers</a></li>
+            </ul>
+            <span style="box-sizing: border-box; display: block; font-size: 13px; font-weight: 700; color: white; margin-bottom: 12px;">Stay Connected</span>
+			
+<style>
+    /* Social icons */
+    .social-icons { display: flex;   gap: 0.7rem;      align-items: center;    }
+    .social-icons a { font-size: 1.2rem;      transition: transform 0.2s;    }
+    .social-icons a:hover { transform: scale(1.2);    }
+	
+    /* Copyright */
+    .footer-copyright {      color: yellow;      font-size: 0.95rem;      white-space: nowrap;    }
+
+    /* -------- Responsive -------- */
+    @media (max-width: 412px) {
+      /* ✅ Mobile: One section per row, vertical scroll */
+      .social-icons { justify-content: center;  }
+    }
+
+    @media (max-width: 800px) {
+      .social-icons {
+        justify-content: center;   }
+    }
+  </style>
+    <!-- ✅ Social icons -->
+        <div class="social-icons">
+          <a href="https://www.instagram.com" target="_blank" style="color:#E1306C;"> <i class="fab fa-instagram"> </i>  </a>
+          <a href="https://twitter.com" target="_blank" style="color:#1DA1F2;"> <i class="fab fa-twitter"></i> </a>
+          <a href="https://www.linkedin.com" target="_blank" style="color:#0077B5;"> <i class="fab fa-linkedin"> </i></a>
+          <a href="https://www.facebook.com" target="_blank" style="color:#1877F2;"> <i class="fab fa-facebook"> </i> </a>
+          <a href="https://www.tumblr.com" target="_blank" style="color:#35465C;"> <i class="fab fa-tumblr"></i> </a>
+          <a href="https://www.pinterest.com" target="_blank" style="color:#E60023;"> <i class="fab fa-pinterest"> </i></a>
+        </div>
+		
+			
+        </div>
+    </div>
+
+    <div style="box-sizing: border-box; max-width: 1440px; margin: 0 auto; padding: 25px 0; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;">
+        
+        <div style="box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+            <div style="box-sizing: border-box; font-size: 11px; font-weight: bold; color: #94a3b8; text-transform: uppercase; padding: 4px 8px; border: 1px solid #e2e8f0; border-radius: 4px; background: #f8fafc;">ID Check</div>
+            <div style="box-sizing: border-box; font-size: 11px; font-weight: bold; color: #0284c7; text-transform: uppercase; padding: 4px 8px; border: 1px solid #e2e8f0; border-radius: 4px; background: #f0f9ff;">PCI DSS</div>
+            <div style="box-sizing: border-box; font-size: 11px; font-weight: bold; color: #16a34a; text-transform: uppercase; padding: 4px 8px; border: 1px solid #e2e8f0; border-radius: 4px; background: #f0fdf4;">Verisign</div>
+            <div style="box-sizing: border-box; font-size: 11px; font-weight: bold; color: #ea580c; text-transform: uppercase; padding: 4px 8px; border: 1px solid #e2e8f0; border-radius: 4px; background: #fff7ed;">Visa Verified</div>
+        </div>
+
+        <div style="box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+            <span style="font-size: 12px; font-weight: 700; color:  #ffff00; letter-spacing: 0.5px;">VISA</span>
+            <span style="font-size: 12px; font-weight: 700; color: #ea580c; letter-spacing: 0.5px;">MASTERCARD</span>
+            <span style="font-size: 12px; font-weight: 700; color: #00ffff; letter-spacing: 0.5px;">AMEX</span>
+            <span style="font-size: 12px; font-weight: 700; color: #2563eb; letter-spacing: 0.5px;">PAYPAL</span>
+            <span style="font-size: 12px; font-weight: 700; color: #ff0000; letter-spacing: 0.5px;">APPLE PAY</span>
+            <span style="font-size: 12px; font-weight: 700; color: white; letter-spacing: 0.5px;">T/T BANK</span>
+        </div>
+
+    </div>
+
+    <div style="box-sizing: border-box; max-width: 1440px; margin: 25px auto 0 auto; text-align: center;">
+        <p style="box-sizing: border-box; font-size: 12px; color: #94a3b8; line-height: 1.8; margin: 0 0 16px 0;">
+            <a href="#" style="color: #64748b; text-decoration: none; margin: 0 6px;">Global Marketplace</a> | 
+            <a href="#" style="color: #64748b; text-decoration: none; margin: 0 6px;">Wholesale Store</a> | 
+            <a href="#" style="color: #64748b; text-decoration: none; margin: 0 6px;">Sourcing Agent Portal</a> | 
+            <a href="#" style="color: #64748b; text-decoration: none; margin: 0 6px;">Logistics Network</a> | 
+            <a href="#" style="color: #64748b; text-decoration: none; margin: 0 6px;">Regional Sites</a> | 
+            <a href="#" style="color: #64748b; text-decoration: none; margin: 0 6px;">Enterprise Solutions</a>
+        </p>
+
+        <p style="box-sizing: border-box; font-size: 11px; color: #94a3b8; line-height: 1.6; margin: 0 0 8px 0;">
+            <a href="#" style="color: #94a3b8; text-decoration: none; margin: 0 4px;">Policies and Rules</a> · 
+            <a href="#" style="color: #94a3b8; text-decoration: none; margin: 0 4px;">Legal Notice</a> · 
+            <a href="#" style="color: #94a3b8; text-decoration: none; margin: 0 4px;">Product Listing Policy</a> · 
+            <a href="#" style="color: #94a3b8; text-decoration: none; margin: 0 4px;">Intellectual Property Protection</a> · 
+            <a href="#" style="color: #94a3b8; text-decoration: none; margin: 0 4px;">Privacy Policy</a> · 
+            <a href="#" style="color: #94a3b8; text-decoration: none; margin: 0 4px;">Terms of Use</a>
+        </p>
+
+        <p style="box-sizing: border-box; font-size: 11px; color: #cbd5e1; margin: 0;">
+            &copy; 1999-2026 B2B Platform Operations Global Ltd. All rights reserved. Registered Licensing System Verification Code: B2B-202699X.
+        </p>
+    </div>
+
+</div>
+
+
+
+
+
+	
+	
 
     <script>
         // Drawer toggle mechanics for smaller viewports
@@ -1025,3 +2591,5 @@
     </script>
 </body>
 </html>
+
+

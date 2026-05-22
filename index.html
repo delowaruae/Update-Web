@@ -22,7 +22,6 @@
         }
 
 
-
     * {
             margin: 0;
             padding: 0;
@@ -2174,7 +2173,7 @@
 
 
 
-<div style="box-sizing: border-box; width: 100%; max-width: 100%; margin: 20px 0; padding: 0; position: relative; overflow: hidden; background-color: #0b1a30; font-family: Arial, Helvetica, sans-serif;">
+<div style="box-sizing: border-box; width: 100%; max-width: 100%; margin: 20px 0; padding: 0; position: relative; overflow: hidden; background-color: #0b1a30;">
     
     <style>
         @keyframes b2bAdsSlider {
@@ -2192,7 +2191,7 @@
         
         <div style="box-sizing: border-box; width: 100%; flex-shrink: 0; height: 2in; display: flex; justify-content: center; align-items: center; background-color: #0b1a30;">
             <a href="#" style="box-sizing: border-box; display: block; width: 100%; height: 100%;">
-                <img src="https://i.ibb.co/nNR7twBv/ads2.jpg" alt="Advertisement 1" style="box-sizing: border-box; width: 100%; height: 4in; object-fit: fill; display: block;">
+                <img src="https://i.ibb.co/kb4MHYH/ad3.png" alt="Advertisement 1" style="box-sizing: border-box; width: 100%; height: 4in; object-fit: fill; display: block;">
             </a>
         </div>
 
@@ -2204,7 +2203,7 @@
 
         <div style="box-sizing: border-box; width: 100%; flex-shrink: 0; height: 2in; display: flex; justify-content: center; align-items: center; background-color: #0b1a30;">
             <a href="#" style="box-sizing: border-box; display: block; width: 100%; height: 100%;">
-                <img src="https://i.ibb.co/Mk1wtmwb/ads.jpg" alt="Advertisement 3" style="box-sizing: border-box; width: 100%; height: 4in; object-fit: fill; display: block;">
+                <img src=" https://i.ibb.co/Mk1wtmwb/ads.jpg" alt="Advertisement 3" style="box-sizing: border-box; width: 100%; height: 4in; object-fit: fill; display: block;">
             </a>
         </div>
 
@@ -2451,6 +2450,150 @@
     </div>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+        /* ==========================================================================
+           HERTZ BANNER STYLES
+           ========================================================================== */
+        
+        /* Banner Container */
+       .hertz-banner {
+            position: fixed;
+            bottom: -150px;
+            left: 0;
+            width: 100%;
+            background: #ffde00 radial-gradient(circle at left, rgba(255,255,255,0.2) 0%, transparent 60%);
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
+            padding: 22px 40px;
+            z-index: 9999;
+            transition: bottom 0.5s ease;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hertz-banner.show { bottom: 0; }
+        .hertz-banner h2 { margin: 0 0 4px; font-size: 28px; font-weight: 700; }
+        .hertz-banner a { color: #0033a0; font-size: 12px; }
+        .hertz-form {
+            display: inline-flex;
+			align-items: center;
+            background: #fff;
+            border-radius: 50px;
+            padding: 4px 4px 4px 20px;
+            width: 100%;
+            max-width: 450px;
+			box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            box-sizing: border-box;
+			text-align: left;
+        }
+		
+        .hertz-form input { 
+		border: none; outline: none; width: 100%; color: #333333; font-size: 15px; background: transparent; }
+		
+        .hertz-form button {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 12px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+			transition: background 0.2s ease;
+            white-space: nowrap;
+        }
+
+    .hertz-form button:hover {
+            background: #222222;
+        }
+
+        /* Responsive UI breakdowns for smaller screens */
+        @media (max-width: 768px) {
+            .hertz-banner {
+                padding: 20px 0;
+            }
+            .hertz-banner-content {
+                display: block;
+                padding: 0 20px;
+            }
+            .hertz-text-column, .hertz-form-column {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+            .hertz-text-group h2 {
+                font-size: 22px;
+                margin-bottom: 6px;
+            }
+            .hertz-form-column {
+                margin-top: 15px;
+            }
+            .hertz-form {
+                max-width: 100%;
+            }
+        }
+    </style>
+
+
+    <div id="hertz-banner" class="hertz-banner">
+        <div>
+            <h2>Get Exclusive Deals from B2B World Market</h2>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <form class="hertz-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Enter your email address" required />
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        const banner = document.getElementById('hertz-banner');
+        const input = banner.querySelector('input');
+        let lastScroll = 0, timer = null, active = false, busy = false;
+
+        const startTimer = () => {
+            clearTimeout(timer);
+            if (!busy) timer = setTimeout(() => banner.classList.remove('show'), 3000);
+        };
+
+        window.addEventListener('scroll', () => {
+            let top = window.scrollY;
+            let atBottom = (window.innerHeight + top) >= document.documentElement.scrollHeight - 60;
+            
+            if (top < lastScroll && atBottom && !active) {
+                banner.classList.add('show');
+                active = true;
+                startTimer();
+            }
+            if (!atBottom) active = false;
+            lastScroll = top <= 0 ? 0 : top;
+        }, { passive: true });
+
+        // Pause timer on hover/focus, resume when mouse leaves or input blurs
+        [['mouseenter', true], ['focusin', true], ['mouseleave', false], ['focusout', false]].forEach(([event, isBusy]) => {
+            banner.addEventListener(event, () => {
+                if (event.includes('leave') && document.activeElement === input) return; // Keep paused if typing
+                busy = isBusy;
+                isBusy ? clearTimeout(timer) : startTimer();
+            });
+        });
+    </script>
+
+
 
 
 
